@@ -1,4 +1,4 @@
-# Projoteca Visualizador — PWA v0.1.0
+# Projoteca Visualizador — PWA v0.1.1
 
 Aplicativo separado da **Projoteca (catálogo documental ZIP)**.
 
@@ -44,8 +44,14 @@ A interface pode ser inspecionada em `http://localhost:8769/` no navegador do pr
 - Edição da Projoteca fica limitada a dados do catálogo. Não reescreve documentos históricos nem alterações de código externos.
 - ZIP importado até 32 MiB de conteúdo descompactado; até 2.000 entradas e no máximo 8 MiB por arquivo, sem criptografia e ZIP64.
 - Compatibilidade da importação depende do suporte a `DecompressionStream('deflate-raw')` do navegador. Testes reais no Safari/iPhone ainda não realizados.
-- Não publicado no GitHub neste pacote. Publicação depende da execução do comando no Termius.
+- A rodada visual v0.1.1 está somente nos arquivos locais, sem commit, push ou deploy.
 
 ## Código
 
 Sem bibliotecas externas ou dependências de produção. HTML/CSS/JavaScript, IndexedDB e service worker. Testes executáveis com Node.
+
+## Alinhamento visual v0.1.1
+
+SVGs locais, tokens de raios e espaçamentos, navegação inferior com rótulos, tipografia legível e temas claro/escuro. Painel com quatro estatísticas derivadas, hierarquia navegável e pendências separadas por estado. Programação continua sendo um protótipo desativado com três fontes alternativas.
+
+Veja [VALIDACAO-v0.1.1.md](./VALIDACAO-v0.1.1.md) para verificações, limites e reprodução do teste opcional de navegador.
