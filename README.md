@@ -1,4 +1,4 @@
-# Projoteca Visualizador — PWA v0.1.1
+# Projoteca Visualizador — PWA v0.1.2
 
 Aplicativo separado da **Projoteca (catálogo documental ZIP)**.
 
@@ -55,3 +55,7 @@ Sem bibliotecas externas ou dependências de produção. HTML/CSS/JavaScript, In
 SVGs locais, tokens de raios e espaçamentos, navegação inferior com rótulos, tipografia legível e temas claro/escuro. Painel com quatro estatísticas derivadas, hierarquia navegável e pendências separadas por estado. Programação continua sendo um protótipo desativado com três fontes alternativas.
 
 Veja [VALIDACAO-v0.1.1.md](./VALIDACAO-v0.1.1.md) para verificações, limites e reprodução do teste opcional de navegador.
+
+## Ajuste de controles v0.1.2
+
+Seletores de ambientes e fontes, botoes de acao, icones, filtros, navegacao e campos de selecao agora usam arredondamento maximo (capsula) via variavel CSS --radius-control: 9999px. Campo de texto multilinha preserva raio de card para leitura e edicao. Dimensoes e comportamento nao foram modificados. Cache do service worker renovado.
