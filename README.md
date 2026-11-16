@@ -1,4 +1,4 @@
-# Projoteca Visualizador — PWA v0.1.2
+# Projoteca Visualizador — PWA v0.1.3
 
 Aplicativo separado da **Projoteca (catálogo documental ZIP)**.
 
@@ -59,3 +59,10 @@ Veja [VALIDACAO-v0.1.1.md](./VALIDACAO-v0.1.1.md) para verificações, limites e
 ## Ajuste de controles v0.1.2
 
 Seletores de ambientes e fontes, botoes de acao, icones, filtros, navegacao e campos de selecao agora usam arredondamento maximo (capsula) via variavel CSS --radius-control: 9999px. Campo de texto multilinha preserva raio de card para leitura e edicao. Dimensoes e comportamento nao foram modificados. Cache do service worker renovado.
+
+## Ajuste de densidade visual v0.1.3
+
+- Barra inferior: caixa de 72px para 44px (sem considerar o inset inferior do iOS), redução aproximada de 39%; área tocável dos botões preservada com 44px de altura. Ícones 23→19px, legendas 12→11px, espaçamentos internos reduzidos.
+- Cabeçalho compacto: padding vertical reduzido; logo 44→36px, título 21→18px, subtítulo 12→11px, ícone de importação 22→18px. Área tocável do botão de importar mantida em 44px.
+- Seletor Catálogo/Programação: altura dos botões 44→38px e padding externo 4→3px, sem reduzir a fonte de 14px; mesmo padrão na seleção de fontes da área Programação.
+- Margens inferiores adaptadas e cache do service worker renovado. Validar aparência no Safari/iPhone, inclusive safe areas.
