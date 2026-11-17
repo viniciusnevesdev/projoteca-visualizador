@@ -216,3 +216,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Padding responsivo derivado de --espaco-dentro-estatistica, uma unica medida de 8px. Intervalos entre os quatro cartoes usam --espaco-pequeno.
 - Removida a regra duplicada de padding mobile. Cores, dados, projeto e tokens gerais permanecem inalterados.
 - Testes verificam os quatro cartoes, largura, altura, alinhamento e visualizacao em Firefox.
+
+
+## v0.1.21 — Cabecalhos compartilhados com Flex alinhado pela base
+
+- Contêiner de titulo/subtitulo .page-title > div usa display:flex, justify-content:flex-start, align-items:flex-end, gap:var(--espaco-titulo-subtitulo-pagina) e flex-wrap:wrap.
+- Espacamento 3px centralizado em spacing.css (--espaco-tres); margens verticais duplicadas do subtitulo removidas.
+- Aplicado a funcao heading() compartilhada entre Painel, Projetos, Pendencias, Arquivos e Ajustes, sem alterar a geracao de HTML, dados ou excluir elementos.
+- Alteracao baseada no relatorio InspetorVisual da sessao 375x679 CSS px. Safari/iPhone ainda requer validacao visual real; testes cobrem os layouts sinteticos responsivos no Firefox.

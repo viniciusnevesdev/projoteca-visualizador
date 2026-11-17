@@ -7,7 +7,7 @@ test('Pendencias usam hierarquia e tokens de espaco especificos',()=>{
  for(const name of ['--espaco-ambiente-pagina','--espaco-titulo-subtitulo-pagina','--espaco-blocos-pagina','--espaco-filtros-secao-pagina'])assert.ok(space.includes(name+': var('),name);
  assert.match(css,/\.environment\.antes-pagina\{margin-bottom:var\(--espaco-ambiente-pagina\)/);
  assert.match(css,/\.pagina-catalogo \.page\{gap:var\(--espaco-blocos-pagina\)/);
- assert.match(css,/\.pagina-catalogo \.page-title \.kicker\{margin-top:var\(--espaco-titulo-subtitulo-pagina\)/);
+ assert.match(css,/\.page-title > div\{display:flex;justify-content:flex-start;align-items:flex-end;gap:var\(--espaco-titulo-subtitulo-pagina\)/);
  assert.match(app,/classList\.toggle\('pagina-pendencias',compactPending\)/);
 });
 test('Aviso tem raio de cartao, pendencias nao usam o azul dos projetos',()=>{
@@ -20,5 +20,5 @@ test('Aprovar e reprovar usam as cores oficiais para regras e tarefas',()=>{
  assert.match(app,/action\.startsWith\('reject-'\)\?'acao-reprovar'/);
  assert.match(css,/\.acao-aprovar\{[^}]*var\(--color-success\)/);
  assert.match(css,/\.acao-reprovar\{[^}]*var\(--color-danger\)/);
- assert.match(sw,/projoteca-visualizador-v030/);
+ assert.match(sw,/projoteca-visualizador-v031/);
 });

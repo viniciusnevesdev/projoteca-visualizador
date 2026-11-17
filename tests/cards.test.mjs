@@ -22,5 +22,5 @@ test('Sem altura artificial de titulo; padding simetrico compartilhado',()=>{
  assert.doesNotMatch(css,/\.project-card button\.linkrow\{/);
  assert.match(css,/\.card\.project-entry \{position:relative;padding:var\(--espaco-dentro-cartao\);\}/);
  assert.match(css,/\.project-card \.project-title\{margin:0/);
- assert.match(sw,/projoteca-visualizador-v030/);
+ assert.match(sw,/projoteca-visualizador-v031/);
 });

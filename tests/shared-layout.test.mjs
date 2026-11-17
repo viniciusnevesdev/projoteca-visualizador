@@ -11,9 +11,9 @@ test('Quatro abas compartilham a hierarquia de espacos',()=>{
  assert.match(css,/\.environment\.antes-pagina\{margin-bottom:var\(--espaco-ambiente-pagina\)/);
  assert.match(css,/\.pagina-catalogo \.page\{gap:var\(--espaco-blocos-pagina\)/);
  assert.match(css,/\.pagina-catalogo \.page-title\{margin-bottom:0\}/);
- assert.match(css,/\.pagina-catalogo \.page-title \.kicker\{margin-top:var\(--espaco-titulo-subtitulo-pagina\)/);
+ assert.match(css,/\.page-title > div\{display:flex;justify-content:flex-start;align-items:flex-end;gap:var\(--espaco-titulo-subtitulo-pagina\)/);
  assert.doesNotMatch(css,/\.environment\.antes-pendencias/);
- assert.match(sw,/projoteca-visualizador-v030/);
+ assert.match(sw,/projoteca-visualizador-v031/);
 });
 test('Tratamento exclusivo dos avisos e pendencias continua exclusivo',()=>{
  assert.match(css,/\.tip\{[^}]*border-radius:var\(--raio-cartao\)/);

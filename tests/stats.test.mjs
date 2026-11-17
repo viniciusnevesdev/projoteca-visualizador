@@ -17,5 +17,5 @@ test('Cor e tamanho da estatistica conservados, espaco centralizado',()=>{
  assert.match(css,/\.stats \.stat-principal\{--stat-accent:var\(--priority-principal\)/);
  assert.match(css,/\.stats \.stat-idea\{--stat-accent:var\(--type-idea\)/);
  assert.match(css,/\.stats \.stat-review\{--stat-accent:var\(--color-warning\)/);
- assert.match(sw,/projoteca-visualizador-v030/);
+ assert.match(sw,/projoteca-visualizador-v031/);
 });

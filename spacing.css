@@ -2,6 +2,7 @@
 :root {
   --espaco-fino: 1px;
   --espaco-minimo: 2px;
+  --espaco-tres: 3px;
   --espaco-micro: 4px;
   --espaco-curto: 6px;
   --espaco-pequeno: 8px;
@@ -23,7 +24,7 @@
   /* Valores por funcao: cada um referencia a escala comum. */
   /* Todas as quatro paginas do catalogo compartilham hierarquia e espacos. */
   --espaco-ambiente-pagina: var(--espaco-pequeno);
-  --espaco-titulo-subtitulo-pagina: var(--espaco-minimo);
+  --espaco-titulo-subtitulo-pagina: var(--espaco-tres);
   --espaco-blocos-pagina: var(--espaco-pequeno);
   --espaco-filtros-secao-pagina: var(--espaco-micro);
   --espaco-dentro-cartao: var(--espaco-medio);
