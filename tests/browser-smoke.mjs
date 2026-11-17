@@ -81,12 +81,16 @@ try{
   await click('button[data-action=theme][data-id='+theme+']');
   await check('Theme '+theme,`document.documentElement.dataset.theme==='${theme}' && getComputedStyle(document.documentElement).colorScheme==='${theme}' && localStorage.getItem('projoteca.theme.v1')==='${theme}'`);
   await check('Theme button selected',`document.querySelector('[data-action=theme][data-id=${theme}]').getAttribute('aria-pressed')==='true'`);
+  await check('Settings priority pills use real classes', "Boolean(document.querySelector('.settings-legend .priority-principal .priority-pill')&&document.querySelector('.settings-legend .priority-alta .priority-pill'))");
+  await evaluate("window.settingsTagStyle=(()=>{const c=getComputedStyle(document.querySelector('.settings-legend .priority-principal .priority-pill'));return Object.fromEntries(['backgroundColor','color','borderColor','paddingTop','paddingLeft'].map(k=>[k,c[k]]))})()");
   await click('[data-action=settings-close]');
   await click('[data-tab=painel]');
   if(theme==='light') await check('Neutral light stat cards', "['project','principal','idea','review'].every(c=>getComputedStyle(document.querySelector('.stats .stat-'+c)).backgroundColor==='rgb(255, 255, 255)')");
   else await check('Dark statistics remain uniform', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor===getComputedStyle(document.querySelector('.stats .stat-project')).backgroundColor");
   await click('[data-tab=projetos]');
   await evaluate("document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}));true");
+  await check('Settings and catalog Principal tags render identically',"(()=>{const b=document.querySelector('.priority-principal .priority-pill');return b&&window.settingsTagStyle&&['backgroundColor','color','borderColor','paddingTop','paddingLeft'].every(k=>getComputedStyle(b)[k]===window.settingsTagStyle[k])})()");
+  await check('Compact list cards clamp descriptions to two lines',"(()=>{const p=document.querySelector('.project-card > p.small');return p && getComputedStyle(p).webkitLineClamp==='2'})()");
   if(theme==='light') await check('Light priority pill is solid violet',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(148, 41, 255)'");
   if(theme==='light') await check('Projects have subtle tinted backgrounds', "(()=>{const a=document.querySelector('.project-entry');return Boolean(a&&getComputedStyle(a).backgroundColor!=='rgb(255, 255, 255)'&&getComputedStyle(a).backgroundColor!=='rgba(0, 0, 0, 0)')})()");
   else await check('Dark priority pill stays subdued',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor!=='rgb(148, 41, 255)'");
@@ -110,7 +114,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=023')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=023')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=024')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=024')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');

@@ -1,0 +1,24 @@
+/* Espacamentos compartilhados: componentes usam sempre esta escala. */
+:root {
+  --espaco-fino: 1px;
+  --espaco-minimo: 2px;
+  --espaco-micro: 4px;
+  --espaco-curto: 6px;
+  --espaco-pequeno: 8px;
+  --espaco-regular: 10px;
+  --espaco-medio: 12px;
+  --espaco-grande: 16px;
+  --espaco-amplo: 20px;
+  --espaco-extra: 24px;
+  --espaco-maximo: 32px;
+  /* Valores por funcao: cada um referencia a escala comum. */
+  --espaco-dentro-cartao: var(--espaco-medio);
+  --espaco-entre-elementos-cartao: var(--espaco-curto);
+  --espaco-entre-cartoes: var(--espaco-pequeno);
+  --espaco-etiqueta-vertical: var(--espaco-micro);
+  --espaco-etiqueta-horizontal: var(--espaco-pequeno);
+  --espaco-botao-vertical: var(--espaco-pequeno);
+  --espaco-botao-horizontal: var(--espaco-medio);
+  --espaco-campo-com-icone: 46px;
+  --reserva-barra-inferior: 72px;
+}

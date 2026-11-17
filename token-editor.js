@@ -2,7 +2,7 @@
 export const TOKEN_STORAGE='projoteca.token-overrides.v1';
 export const LEGACY_STORAGE='projoteca.token-overrides.backup-v019';
 export const TOKEN_SCHEMA='projoteca-token-changes-v1';
-const VERSION='0.1.13';
+const VERSION='0.1.14';
 const SECTIONS=[
  {
   "id": "structure",

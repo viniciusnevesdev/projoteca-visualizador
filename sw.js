@@ -1,4 +1,4 @@
-const CACHE='projoteca-visualizador-v023';const ASSETS=['./','./index.html','./tokens.css?v=023','./typography.css?v=023','./styles.css?v=023','./app.js?v=023','./token-editor.js?v=023','./icons.js','./zip.js','./catalog.js','./manifest.webmanifest','./assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/apple-touch-icon.png'];
+const CACHE='projoteca-visualizador-v024';const ASSETS=['./','./index.html','./tokens.css?v=024','./typography.css?v=024','./spacing.css?v=024','./styles.css?v=024','./app.js?v=024','./token-editor.js?v=024','./icons.js','./zip.js','./catalog.js','./manifest.webmanifest','./assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/apple-touch-icon.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

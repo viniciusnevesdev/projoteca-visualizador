@@ -154,3 +154,13 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Botões superiores de ambiente mantidos com altura mínima 38px; botões de navegação inferior mantidos com altura mínima 44px.
 - As 20 cores-base de tokens.css e as cinco personalizações aprovadas permanecem intocadas.
 - A escala foi copiada do Vini UI; alterações futuras precisam de incorporação explícita e testes. Matriz e conteúdo privados inalterados.
+
+
+## v0.1.14 — Cartões compactos e sistema de espaçamento
+
+- spacing.css tem escala de 11 valores e aliases por função: cartão, distância entre cartões, etiquetas e botões. Todos os padding/gap/margin do styles.css referenciam os tokens.
+- Cartões: padding 12px; gap entre conteúdos 6px; entre cartões 8px; descrição resumida em no máximo 2 linhas com texto completo em Detalhes. Alvo de toque do Abrir preservado em 44px.
+- Cor de fundo azul: intensidade reduzida de 9% para 5% da cor-base do projeto; tema escuro segue neutro.
+- Ajustes agora usam a etiqueta REAL de Principal e Alta, classes iguais às da biblioteca, em vez de uma imitação em roxo translúcido.
+- Ícone dos Ajustes substituído por engrenagem dentada, não sol.
+- 20 cores e 7 tamanhos de fonte mantidos; dados, ZIP, Matriz e preferências locais não foram alterados.

@@ -29,7 +29,8 @@ test('Five exact official MMU color values remain fixed',()=>{
 test('Derived structural colors and statuses have no orphan global references',()=>{
  const locals=[...css.matchAll(/(^|[\s;{])(--[a-z0-9-]+)\s*:/gm)].map(x=>x[2]);
  const fonts=[...read('typography.css').matchAll(/(--fonte-[a-z-]+):/g)].map(m=>m[1]);
- const all=new Set([...declared,...fonts,...locals,'--sample']);
+ const espacos=[...read('spacing.css').matchAll(/(--[a-z0-9-]+):/g)].map(m=>m[1]);
+ const all=new Set([...declared,...fonts,...espacos,...locals,'--sample']);
  const refs=[...css.matchAll(/var\((--[a-z0-9-]+)/g)].map(x=>x[1]);
  assert.deepEqual([...new Set(refs.filter(x=>!all.has(x)))],[]);
  for(const removed of ['--surface2','--surface3','--on-brand','--nav-bg','--shadow-toast','--dialog-backdrop','--status-warning-ink']){
@@ -56,12 +57,12 @@ test('Old local choices kept in migration backup, and copy output persists them'
  assert.match(editor,/Copiar alterações/);
 });
 test('Theme and offline version 0.1.11 correct',()=>{
- assert.match(html,/v0\.1\.13/);
- assert.match(html,/tokens\.css\?v=023/);
- assert.match(html,/styles\.css\?v=023/);
- assert.match(sw,/projoteca-visualizador-v023/);
- assert.match(sw,/token-editor\.js\?v=023/);
- assert.match(app,/token-editor\.js\?v=023/);
+ assert.match(html,/v0\.1\.14/);
+ assert.match(html,/tokens\.css\?v=024/);
+ assert.match(html,/styles\.css\?v=024/);
+ assert.match(sw,/projoteca-visualizador-v024/);
+ assert.match(sw,/token-editor\.js\?v=024/);
+ assert.match(app,/token-editor\.js\?v=024/);
  assert.match(tokens,/color-scheme: light dark/);
  assert.match(css,/--stat-accent-width:4px/);
  assert.match(css,/data-theme="dark"/);
