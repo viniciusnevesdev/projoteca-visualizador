@@ -82,11 +82,12 @@ try{
   await check('Theme button selected',`document.querySelector('[data-action=theme][data-id=${theme}]').getAttribute('aria-pressed')==='true'`);
   await click('[data-action=settings-close]');
   await click('[data-tab=painel]');
-  if(theme==='light') await check('Vivid light priority background', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor==='rgb(233, 206, 255)'");
+  if(theme==='light') await check('Neutral light stat cards', "['project','principal','idea','review'].every(c=>getComputedStyle(document.querySelector('.stats .stat-'+c)).backgroundColor==='rgb(255, 255, 255)')");
   else await check('Dark statistics remain uniform', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor===getComputedStyle(document.querySelector('.stats .stat-project')).backgroundColor");
   await click('[data-tab=projetos]');
   await evaluate("document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}));true");
   if(theme==='light') await check('Light priority pill is solid violet',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(139, 50, 232)'");
+  if(theme==='light') await check('Projects have subtle tinted backgrounds', "getComputedStyle(document.querySelector('.project-entry:not(.type-idea)')).backgroundColor==='rgb(235, 242, 250)' && getComputedStyle(document.querySelector('.project-entry.type-idea')).backgroundColor==='rgb(231, 244, 241)'");
   else await check('Dark priority pill stays subdued',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(32, 43, 58)'");
   await click('[data-tab=painel]');
   for(const width of [320,390,768]){

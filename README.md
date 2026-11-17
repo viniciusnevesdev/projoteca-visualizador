@@ -100,3 +100,13 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Modo escuro preserva a paleta de v0.1.6 via segundo valor light-dark. Cada cor fica centralizada em tokens.css; CSS de componentes não contém hexadecimais.
 - SVGs MMU com licença não comprovada continuam de fora. Implementação de ajustes e ZIP privados preservados.
 - Cache: estilos com URL versionada e navegação network-first (offline usa HTML cacheado). Link com index.html?versao=017 permite forçar HTML atualizado, mas persistência do cache Safari continua sujeita ao sistema.
+
+
+## v0.1.8 — Estatísticas neutras e cartões de projetos levemente coloridos
+
+- Decisão: remover fundos saturados dos quatro cartões de estatísticas, mantendo fundo suavemente colorido nos cartões de projetos para diferenciar visualmente os grupos.
+- Estatísticas: fundo neutro stat-card-bg (branco no claro, surface no escuro); borda lateral de 4px + números com cor identificadora.
+- Separação: Projetos = azul (type-project); Principais = violeta (priority-principal); Só ideias = turquesa (type-idea); A verificar = amarelo de atenção (status-warning).
+- Cartões: projeto azul-acinzentado suave (type-project-card-bg), ideia verde-água suave (type-idea-card-bg), borda de 3px. No escuro continuam com fundo anterior. Principal mantém etiqueta roxa preenchida.
+- Cores apenas em tokens.css; catálogo privado, funções e ZIP não alterados.
+- Mesmo no escuro, a classificação Ideia usa turquesa em vez de repetir o violeta da prioridade Principal.

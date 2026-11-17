@@ -7,7 +7,7 @@ const style=read('styles.css');
 const app=read('app.js');
 const html=read('index.html');
 test('One color source with three independent families',()=>{
- assert.match(html,/href="\.\/tokens\.css\?v=017"/);
+ assert.match(html,/href="\.\/tokens\.css\?v=018"/);
  assert.match(tokens,/color-scheme:light dark/);
  for(const name of ['--status-success','--status-warning','--status-danger','--priority-principal','--priority-alta','--priority-normal','--type-project','--type-idea','--type-decision','--type-file','--type-pending','--type-rule']){
   assert.ok(tokens.includes(name+':'),name);
@@ -28,7 +28,7 @@ test('Light theme vibrancy isolated from dark theme',()=>{
  for(const token of ['--priority-principal-bg','--priority-principal-ink','--status-warning-bg','--status-warning-ink','--type-project-bg','--type-idea-bg']){
   assert.match(tokens,new RegExp(token.replaceAll('-','\\-')+':light-dark\\('));
  }
- assert.match(style,/\.stats \.stat-principal\{background:var\(--priority-principal-bg\)/);
+ assert.match(style,/\.stats \.stat-principal\{background:var\(--stat-card-bg\)/);
  assert.match(style,/\.status-aguardando_decisao\{[^}]*background:var\(--status-warning-card-bg\)/);
  assert.doesNotMatch(style,/#[a-fA-F0-9]{3,8}\b/);
 });
@@ -36,10 +36,22 @@ test('Light theme vibrancy isolated from dark theme',()=>{
 test('Vivid priority fills and versioned style assets avoid stale PWA CSS',()=>{
  assert.match(tokens,/--priority-principal-fill:light-dark\(#8B32E8/);
  assert.match(style,/\.priority-principal \.priority-pill\{[^}]*background:var\(--priority-principal-fill\)/);
- assert.match(html,/href="\.\/tokens\.css\?v=017"/);
- assert.match(html,/href="\.\/styles\.css\?v=017"/);
+ assert.match(html,/href="\.\/tokens\.css\?v=018"/);
+ assert.match(html,/href="\.\/styles\.css\?v=018"/);
  const sw=read('sw.js');
  assert.match(sw,/event\.request\.mode==='navigate'/);
  assert.match(sw,/fetch\(event\.request\)/);
- assert.match(sw,/\.\/tokens\.css\?v=017/);
+ assert.match(sw,/\.\/tokens\.css\?v=018/);
+});
+
+test('Statistics stay neutral; project cards retain soft distinct tints',()=>{
+ assert.match(tokens,/--stat-card-bg:var\(--surface\)/);
+ assert.match(tokens,/--type-idea:light-dark\(#008F91,#7CE1D8\)/);
+ assert.match(tokens,/--type-project-card-bg:light-dark\(#EBF2FA,var\(--surface\)\)/);
+ assert.match(tokens,/--type-idea-card-bg:light-dark\(#E7F4F1,var\(--surface\)\)/);
+ for(const category of ['project','principal','idea','review']){
+  assert.match(style,new RegExp('\\.stats \\.stat-'+category+'\\{background:var\\(--stat-card-bg\\)'));
+ }
+ assert.match(style,/\.project-entry\{[^}]*background:var\(--type-project-card-bg\)/);
+ assert.match(style,/\.project-entry\.type-idea\{[^}]*background:var\(--type-idea-card-bg\)/);
 });

@@ -47,7 +47,9 @@
  --priority-principal-ink:light-dark(#692B99,#d9a4ff);
  --priority-alta-ink:light-dark(#70488F,#c3afe0);
  --priority-principal-bg:light-dark(#E9CEFF,var(--surface2));
- --stat-accent-width:light-dark(5px,0px);
+ --stat-accent-width:light-dark(4px,0px);
+ --stat-card-bg:var(--surface);
+ --project-card-stroke-width:3px;
  --priority-alta-bg:light-dark(#EBD5FA,var(--surface2));
  --priority-principal-chip-bg:light-dark(#F2E1FF,transparent);
  /* Saturação aplicada nos pequenos elementos, sem sacrificar o texto. */
@@ -58,7 +60,7 @@
  --brand-highlight:light-dark(#D4E9FF,var(--surface3));
  /* 3. Tipo de conteudo Projoteca */
  --type-project:light-dark(#098DF0,#88caff);
- --type-idea:light-dark(#AC48F2,#d0b5ff);
+ --type-idea:light-dark(#008F91,#7CE1D8);
  --type-decision:light-dark(#FF9F50,#f0be95);
  --type-file:light-dark(#0CBABB,#8dd5d9);
  --type-pending:light-dark(#ECAA52,#dfba89);
@@ -66,15 +68,15 @@
  /* Fundos luminosos para categorias no modo claro. */
  --type-project-bg:light-dark(#D9EEFF,var(--surface2));
  --type-project-ink:light-dark(#0B6197,#88caff);
- --type-idea-bg:light-dark(#EED9FF,var(--surface2));
- --type-idea-ink:light-dark(#682B9A,#d0b5ff);
+ --type-idea-bg:light-dark(#E7F4F1,var(--surface2));
+ --type-idea-ink:light-dark(#007377,#7CE1D8);
  --type-file-bg:light-dark(#E3FAFA,transparent);
  --type-file-ink:light-dark(#0B686B,#8dd5d9);
- --type-idea-chip-bg:light-dark(#F4E8FF,transparent);
- --type-project-card-bg:light-dark(#E5F3FF,var(--surface));
- --type-idea-card-bg:light-dark(#F2E1FF,var(--surface));
+ --type-idea-chip-bg:light-dark(#E7F4F1,transparent);
+ --type-project-card-bg:light-dark(#EBF2FA,var(--surface));
+ --type-idea-card-bg:light-dark(#E7F4F1,var(--surface));
  --type-project-on-fill:light-dark(#073C6C,var(--ink));
- --type-idea-on-fill:light-dark(#4E197D,var(--ink));
+ --type-idea-on-fill:light-dark(#07565A,var(--ink));
  --type-file-on-fill:light-dark(#064C56,var(--ink));
 }
 :root[data-theme="light"] {color-scheme:light}
