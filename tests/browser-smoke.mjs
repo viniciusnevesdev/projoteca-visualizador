@@ -73,7 +73,7 @@ try{
  await click('[data-tab=pendencias]');
  await check('Approve and reject visual 38px, touch region 44px',"(()=>{const btns=['approve-rule','reject-rule'].map(a=>document.querySelector('[data-action='+a+']'));return btns.every(b=>b && Math.abs(b.getBoundingClientRect().height-38)<1 && parseFloat(getComputedStyle(b,'::after').height)>=44)})()");
 
- await check('Pending spacing, tip corners and compact page',"(()=>{const m=document.querySelector('#main'),e=document.querySelector('.environment'),k=m?.querySelector('.kicker'),tip=m?.querySelector('.tip'),page=m?.querySelector('.page');return !!(m?.classList.contains('pagina-pendencias')&&e.classList.contains('antes-pendencias')&&k&&tip&&page&&Math.abs(parseFloat(getComputedStyle(k).marginTop)-2)<1&&Math.abs(parseFloat(getComputedStyle(tip).borderTopLeftRadius)-18)<1&&parseFloat(getComputedStyle(page).rowGap)<=8)})()");
+ await check('Pending spacing, tip corners and compact page',"(()=>{const m=document.querySelector('#main'),e=document.querySelector('.environment'),k=m?.querySelector('.kicker'),tip=m?.querySelector('.tip'),page=m?.querySelector('.page');return !!(m?.classList.contains('pagina-pendencias')&&e.classList.contains('antes-pagina')&&k&&tip&&page&&Math.abs(parseFloat(getComputedStyle(k).marginTop)-2)<1&&Math.abs(parseFloat(getComputedStyle(tip).borderTopLeftRadius)-18)<1&&parseFloat(getComputedStyle(page).rowGap)<=8)})()");
  await check('Approvals in green, rejections in red',"(()=>{const a=document.querySelector('.acao-aprovar'),b=document.querySelector('.acao-reprovar');if(!a||!b)return false;const x=getComputedStyle(a),y=getComputedStyle(b);return x.backgroundColor!==y.backgroundColor&&x.color!==y.color&&x.borderTopColor!==y.borderTopColor})()");
  await check('All pending categories and rules',"['Aguardando decisão','Sem sua opinião','Aprovado · não implementado','Ações dos projetos','Regras do catálogo'].every(s=>document.querySelector('#main').innerText.includes(s))");
  await click('[data-action=approve-rule][data-id=g1]');
@@ -89,6 +89,10 @@ try{
  await click('[data-tab=painel]');await click('[data-action=export]');
  await wait('window.testExportBlob');
  await check('Versioned export reimports with note and decision',`await (async()=>{const {readZip}=await import('./zip.js');const {readCatalog}=await import('./catalog.js');const c=readCatalog(await readZip(window.testExportBlob));return c.manifest.versao==='0.0.2' && c.byId.get('raiz').observacoes.some(s=>s.includes('Anotação sintética')) && c.registry.itens.find(x=>x.id==='g1').status==='aprovado_nao_implementado'})()`);
+ for(const tab of ['painel','projetos','pendencias','arquivos']){
+  await click('[data-tab='+tab+']');
+  await check('Shared page spacing '+tab,"(()=>{const main=document.querySelector('#main'),env=document.querySelector('.environment'),page=main?.querySelector('.page'),heading=main?.querySelector('.page-title'),kicker=heading?.querySelector('.kicker');if(!main?.classList.contains('pagina-catalogo')||!env?.classList.contains('antes-pagina')||!page||!heading)return false;const gap=parseFloat(getComputedStyle(page).rowGap),above=parseFloat(getComputedStyle(env).marginBottom),mb=parseFloat(getComputedStyle(heading).marginBottom);return Math.abs(gap-8)<1&&Math.abs(above-8)<1&&mb<1&&(!kicker||Math.abs(parseFloat(getComputedStyle(kicker).marginTop)-2)<1)})()");
+ }
  for(const theme of ['light','dark']){
   await click('#btn-settings');
   await check('Settings independent of catalog',"document.querySelector('#main h1').textContent==='Ajustes' && getComputedStyle(document.querySelector('.bottom')).display==='none'");
@@ -128,7 +132,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=027')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=027')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=028')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=028')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');

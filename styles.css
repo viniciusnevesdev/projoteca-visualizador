@@ -154,13 +154,13 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
   transform:translateY(-50%);
   background:transparent;
 }
-/* Pendencias: hierarquia distinta de outras areas. */
-.environment.antes-pendencias{margin-bottom:var(--espaco-ambiente-pendencias)}
-.pagina-pendencias .page{gap:var(--espaco-blocos-pendencias)}
-.pagina-pendencias .page-title{margin-bottom:0}
-.pagina-pendencias .page-title .kicker{margin-top:var(--espaco-titulo-subtitulo-pendencias)}
+/* Hierarquia compacta compartilhada nas quatro abas do catalogo. */
+.environment.antes-pagina{margin-bottom:var(--espaco-ambiente-pagina)}
+.pagina-catalogo .page{gap:var(--espaco-blocos-pagina)}
+.pagina-catalogo .page-title{margin-bottom:0}
+.pagina-catalogo .page-title .kicker{margin-top:var(--espaco-titulo-subtitulo-pagina)}
 .pagina-pendencias .tip{border-radius:var(--radius-card)}
-.pagina-pendencias .chips + .stack{margin-top:var(--espaco-filtros-secao-pendencias)}
+.pagina-catalogo .chips + .stack{margin-top:var(--espaco-filtros-secao-pagina)}
 /* Decisoes nao sao projetos azuis: superficie neutra, acentos por tipo. */
 .pagina-pendencias .pending-card{background:var(--surface)}
 /* Acoes usam apenas tokens semanticos oficiais, em ambos temas. */

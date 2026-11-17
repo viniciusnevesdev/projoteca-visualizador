@@ -190,3 +190,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Cartões de decisões/ações distintos dos cartões azuis de projeto: fundo neutro e acentos por categoria (decisão, pendência, regra).
 - Botões Aprovar/Reprovar usam classes compartilhadas na fábrica de botões para regras e tarefas, sempre derivando de --color-success e --color-danger, sem criar cores novas.
 - Dados, arquivo ZIP, matriz, cores oficiais e opções locais preservados.
+
+
+## v0.1.18 — Hierarquia compartilhada em quatro abas
+
+- Corrigida a aplicação indevidamente exclusiva de espaçamentos da v0.1.17. Agora Painel, Projetos, Pendências e Arquivos compartilham exatamente os mesmos tokens de distância: seletor ambiente→título 8px, título→subtítulo 2px, distância entre seções 8px, filtros→seção 4px quando houver essa estrutura.
+- Um estado de layout do catálogo aplica as regras apenas às quatro abas; Ajustes e ambiente Programação não recebem as regras por engano.
+- Estilos específicos de Pendências (cartões neutros, cores positivas e destrutivas, aviso com raio de cartão) permanecem próprios dessa página.
+- Sem alterações em catálogo, matrizes, arquivos ZIP, cores ou escala de tipografia.

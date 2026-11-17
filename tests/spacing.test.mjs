@@ -27,7 +27,7 @@ test('Fundo de projeto mais suave, descrição curta e engrenagem',()=>{
  assert.doesNotMatch(html,/M12 2v2m0 16v2/);
 });
 test('Folha de espaços e cache versão 024',()=>{
- assert.match(html,/spacing\.css\?v=027/);
- assert.match(sw,/spacing\.css\?v=027/);
- assert.match(sw,/projoteca-visualizador-v027/);
+ assert.match(html,/spacing\.css\?v=028/);
+ assert.match(sw,/spacing\.css\?v=028/);
+ assert.match(sw,/projoteca-visualizador-v028/);
 });

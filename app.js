@@ -1,5 +1,5 @@
 import{icon}from'./icons.js';
-import{initTokenEditor,renderTokenEditor,leaveTokenEditor,tokenClick,tokenInput,tokenChange,tokenFileChange,getEditorState}from'./token-editor.js?v=027';
+import{initTokenEditor,renderTokenEditor,leaveTokenEditor,tokenClick,tokenInput,tokenChange,tokenFileChange,getEditorState}from'./token-editor.js?v=028';
 import{readZip,writeZip,zipText}from'./zip.js';
 import{readCatalog,exportCatalog,addIdea,phaseNames,phaseValues,activityNames,activityValues,decisionNames,today}from'./catalog.js';
 const $=(s,root=document)=>root.querySelector(s);
@@ -72,9 +72,12 @@ function selectTheme(value){
  try{if(value==='auto')localStorage.removeItem('projoteca.theme.v1');else localStorage.setItem('projoteca.theme.v1',value)}catch{toast('Não foi possível salvar o tema neste navegador.')}
  syncThemeColor();render();
 }
-function render(){const compactPending=state.tab==='pendencias'&&state.environment==='catalogo'&&!state.settings;
+function render(){const layoutCatalogo=state.environment==='catalogo'&&!state.settings&&['painel','projetos','pendencias','arquivos'].includes(state.tab);
+document.querySelector('#main')?.classList.toggle('pagina-catalogo',layoutCatalogo);
+document.querySelector('.environment')?.classList.toggle('antes-pagina',layoutCatalogo);
+const compactPending=state.tab==='pendencias'&&state.environment==='catalogo'&&!state.settings;
 document.querySelector('#main')?.classList.toggle('pagina-pendencias',compactPending);
-document.querySelector('.environment')?.classList.toggle('antes-pendencias',compactPending);
+
 nav();const m=$('#main');if(state.settings){m.innerHTML=`<div class="page settings-page">${getEditorState().opened?renderTokenEditor():settingsPage()}</div>`;return}if(state.environment==='programacao'){m.innerHTML=`<div class="page">${programPage()}</div>`;return}if(!hasCatalog()){m.innerHTML=`<div class="page">${noCatalog()}</div>`;return}let html;switch(state.tab){case 'projetos':html=state.project?detail():listProjects();break;case 'pendencias':html=pendingPage();break;case 'arquivos':html=filesPage();break;default:html=dashboard()}m.innerHTML=`<div class="page">${state.events.length?`<div class="row card softcard"><span class="small">${state.events.length} alteração(ões) não exportada(s)</span>${button('export','Exportar ZIP','','primary mini')}</div>`:''}${html}</div>`}
 async function importFile(file){if(!file)return;if(state.events.length&&!confirm('Há alterações não exportadas. Importar outro ZIP descartará o rascunho atual. Continuar?'))return;
  try{state.busy=true;toast('Lendo ZIP e conferindo arquivos...');const f=await readZip(file);const parsed=readCatalog(f);state.source=f;state.sourceBlob=file;state.original=parsed;state.edited=cloneData(parsed);state.events=[];state.tab='painel';state.project='';state.file='';state.folder='/';await storagePut('zip',file);await storageDelete('draft');render();toast('Projoteca carregada: '+parsed.projects.length+' projetos')}catch(e){toast(e.message||'Falha ao ler ZIP');console.error(e)}finally{state.busy=false}}
