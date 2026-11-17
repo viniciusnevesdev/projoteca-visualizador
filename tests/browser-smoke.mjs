@@ -86,9 +86,9 @@ try{
   else await check('Dark statistics remain uniform', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor===getComputedStyle(document.querySelector('.stats .stat-project')).backgroundColor");
   await click('[data-tab=projetos]');
   await evaluate("document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}));true");
-  if(theme==='light') await check('Light priority pill is solid violet',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(146, 54, 239)'");
+  if(theme==='light') await check('Light priority pill is solid violet',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(148, 41, 255)'");
   if(theme==='light') await check('Projects have subtle tinted backgrounds', "(()=>{const a=document.querySelector('.project-entry');return Boolean(a&&getComputedStyle(a).backgroundColor!=='rgb(255, 255, 255)'&&getComputedStyle(a).backgroundColor!=='rgba(0, 0, 0, 0)')})()");
-  else await check('Dark priority pill stays subdued',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor!=='rgb(146, 54, 239)'");
+  else await check('Dark priority pill stays subdued',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor!=='rgb(148, 41, 255)'");
   await click('[data-tab=painel]');
   for(const width of [320,390,768]){
    await viewport(width);
@@ -109,7 +109,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=021')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=021')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=022')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=022')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');

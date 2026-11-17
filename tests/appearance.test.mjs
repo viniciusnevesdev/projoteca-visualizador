@@ -55,13 +55,20 @@ test('Old local choices kept in migration backup, and copy output persists them'
  assert.match(editor,/Copiar alterações/);
 });
 test('Theme and offline version 0.1.11 correct',()=>{
- assert.match(html,/v0\.1\.11/);
- assert.match(html,/tokens\.css\?v=021/);
- assert.match(html,/styles\.css\?v=021/);
- assert.match(sw,/projoteca-visualizador-v021/);
- assert.match(sw,/token-editor\.js\?v=021/);
- assert.match(app,/token-editor\.js\?v=021/);
+ assert.match(html,/v0\.1\.12/);
+ assert.match(html,/tokens\.css\?v=022/);
+ assert.match(html,/styles\.css\?v=022/);
+ assert.match(sw,/projoteca-visualizador-v022/);
+ assert.match(sw,/token-editor\.js\?v=022/);
+ assert.match(app,/token-editor\.js\?v=022/);
  assert.match(tokens,/color-scheme: light dark/);
  assert.match(css,/--stat-accent-width:4px/);
  assert.match(css,/data-theme="dark"/);
+});
+
+test('Paleta personalizada em cinco escolhas, vinte tokens oficiais',()=>{
+ assert.match(tokens,/--priority-principal:\s*light-dark\(#9429FF,#C675FF\)/);
+ assert.match(tokens,/--priority-alta:\s*light-dark\(#FF86E9,#F780FF\)/);
+ assert.match(tokens,/--type-idea:\s*light-dark\(#9AB7B7,#7CE1D8\)/);
+ assert.equal(declared.length,20);
 });

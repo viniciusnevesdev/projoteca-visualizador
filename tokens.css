@@ -18,11 +18,11 @@
   --color-info: #0189FB;
   --action-add: #30BCFF;
   /* Importância */
-  --priority-principal: light-dark(#9236EF,#d9a4ff);
-  --priority-alta: light-dark(#B46CE9,#c3afe0);
+  --priority-principal: light-dark(#9429FF,#C675FF);
+  --priority-alta: light-dark(#FF86E9,#F780FF);
   /* Identificação de conteúdo */
   --type-project: light-dark(#098DF0,#88caff);
-  --type-idea: light-dark(#008F91,#7CE1D8);
+  --type-idea: light-dark(#9AB7B7,#7CE1D8);
   --type-decision: light-dark(#FF9F50,#f0be95);
   --type-file: light-dark(#0CBABB,#8dd5d9);
   --type-pending: light-dark(#ECAA52,#dfba89);

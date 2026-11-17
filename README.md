@@ -139,3 +139,10 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Overlay de diálogos deriva de ink/bg. Textos semânticos derivam das cinco cores oficiais MMU, com contraste diferente para claro/escuro; verificar visual/contraste após alterar drasticamente as cores-base.
 - Editor visual lista somente os 20 tokens de tokens.css. Personalizações anteriores continuam em legacy e no backup local. A sombra subtil/toast migra para shadow quando não já definida; as demais variações sem correspondência segura ficam preservadas, não se inventa uma equivalência.
 - Caches/JS/CSS versionados; testes automáticos e browser smoke. Nenhuma alteração em Conteúdo.zip, Matriz.zip ou catálogos.
+
+
+## v0.1.12 — Cores escolhidas pelo usuário
+- Claro: priority-alta #FF86E9; priority-principal #9429FF; type-idea #9AB7B7.
+- Escuro: priority-alta #F780FF; priority-principal #C675FF. Tipo ideia escuro permaneceu #7CE1D8.
+- Três valores no campo legacy do relatório (priority-normal #C2CFE0; status-danger #FF6947; status-pending #FFC157) são históricos de tokens removidos: não aplicados à paleta oficial, não reintroduzidos como tokens-base.
+- Vinte tokens reais mantidos em tokens.css. Matriz e ZIP Conteúdo inalterados.
