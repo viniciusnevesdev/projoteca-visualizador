@@ -1,4 +1,4 @@
-# Projoteca Visualizador — PWA v0.1.3
+# Projoteca Visualizador — PWA v0.1.4
 
 Aplicativo separado da **Projoteca (catálogo documental ZIP)**.
 
@@ -66,3 +66,9 @@ Seletores de ambientes e fontes, botoes de acao, icones, filtros, navegacao e ca
 - Cabeçalho compacto: padding vertical reduzido; logo 44→36px, título 21→18px, subtítulo 12→11px, ícone de importação 22→18px. Área tocável do botão de importar mantida em 44px.
 - Seletor Catálogo/Programação: altura dos botões 44→38px e padding externo 4→3px, sem reduzir a fonte de 14px; mesmo padrão na seleção de fontes da área Programação.
 - Margens inferiores adaptadas e cache do service worker renovado. Validar aparência no Safari/iPhone, inclusive safe areas.
+
+## Publicacao v0.1.4 - cores semanticas MMU
+
+- Tokens semanticos oficiais do MMU (danger, success, warning, info e action-add) adicionados; botoes de criar/adicionar usam action-add.
+- Icones proprios da v0.1.3 preservados; 16 SVGs MMU candidatos **nao publicados** porque o MMU registra licenca_verificada: false para simbolos relacionados a SF Symbols. Candidato completo arquivado separadamente no MacBook.
+- Nenhuma mudanca na logica de importacao/exportacao nem no catalogo privado. Migracao integral de icones ainda pendente.

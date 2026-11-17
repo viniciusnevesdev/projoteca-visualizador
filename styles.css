@@ -3,6 +3,10 @@
  --bg:#10151e; --surface:#19212e; --surface2:#202b3a; --surface3:#2c3a4e;
  --ink:#f1f5fb; --muted:#b3c0d2; --line:#354359; --brand:#b6cdf2;
  --on-brand:#172a44; --green:#a8dfc7; --warn:#eed298; --danger:#f2b0b3;
+ --color-primary:var(--brand); --on-primary:var(--on-brand);
+ --color-danger:#E22400; --on-danger:#fff; --color-success:#34C759; --on-success:#000;
+ --color-warning:#FFB501; --on-warning:#000; --color-info:#0189FB; --on-info:#000;
+ --action-add:#30BCFF; --on-action-add:#000;
  --nav-bg:#19212ef5; --radius-card:18px; --radius-control:9999px; --radius-pill:9999px;
  --space:16px; --page-space:20px; --app-width:770px;
  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
@@ -27,3 +31,5 @@ pre{font-size:13px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;c
 @media(max-width:390px){:root{--page-space:16px}.beta{display:none}.card{padding:14px}.stats .card{padding:14px}.tools button{font-size:13px}.row{gap:8px}.row>.ghost{flex-shrink:0}}
 @media(min-width:700px){:root{--page-space:28px}.header{padding-top:calc(8px + env(safe-area-inset-top))}.page{gap:20px}.empty{padding:32px 20px}.card{padding:20px}}
 @media(prefers-reduced-motion:no-preference){button{transition:background-color .15s,color .15s}button:active:not(:disabled){filter:brightness(.94)}}
+
+button[data-action="new-idea"],button[data-action="add-note"],button[data-action="add-pending"]{background:var(--action-add);color:var(--on-action-add);border-color:var(--action-add)}
