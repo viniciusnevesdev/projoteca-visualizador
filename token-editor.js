@@ -2,7 +2,7 @@
 export const TOKEN_STORAGE='projoteca.token-overrides.v1';
 export const LEGACY_STORAGE='projoteca.token-overrides.backup-v019';
 export const TOKEN_SCHEMA='projoteca-token-changes-v1';
-const VERSION='0.1.10';
+const VERSION='0.1.11';
 const SECTIONS=[
  {
   "id": "structure",
@@ -10,17 +10,11 @@ const SECTIONS=[
   "keys": [
    "--bg",
    "--surface",
-   "--surface2",
-   "--surface3",
    "--ink",
    "--muted",
    "--line",
    "--brand",
-   "--on-brand",
-   "--nav-bg",
-   "--shadow-subtle",
-   "--shadow-toast",
-   "--dialog-backdrop"
+   "--shadow"
   ]
  },
  {
@@ -44,16 +38,6 @@ const SECTIONS=[
   ]
  },
  {
-  "id": "status",
-  "name": "Textos de estado",
-  "keys": [
-   "--status-danger-ink",
-   "--status-success-ink",
-   "--status-warning-ink",
-   "--status-info-ink"
-  ]
- },
- {
   "id": "actions",
   "name": "Semânticas MMU",
   "keys": [
@@ -61,25 +45,18 @@ const SECTIONS=[
    "--color-success",
    "--color-warning",
    "--color-info",
-   "--action-add",
-   "--on-action-add"
+   "--action-add"
   ]
  }
 ];
 const LABELS={
  "--bg": "Fundo geral",
- "--surface": "Cartões neutros",
- "--surface2": "Superfície secundária",
- "--surface3": "Superfície destacada",
+ "--surface": "Cartões e superfícies",
  "--ink": "Texto principal",
  "--muted": "Texto secundário",
- "--line": "Bordas neutras",
+ "--line": "Bordas e superfícies derivadas",
  "--brand": "Cor principal do app",
- "--on-brand": "Texto sobre cor principal",
- "--nav-bg": "Barra inferior",
- "--shadow-subtle": "Sombra suave",
- "--shadow-toast": "Sombra de avisos",
- "--dialog-backdrop": "Fundo atrás das janelas",
+ "--shadow": "Sombra compartilhada",
  "--priority-principal": "Principal",
  "--priority-alta": "Alta",
  "--type-project": "Projetos",
@@ -88,16 +65,11 @@ const LABELS={
  "--type-file": "Arquivos",
  "--type-pending": "Pendências",
  "--type-rule": "Regras",
- "--status-danger-ink": "Texto de perigo",
- "--status-success-ink": "Texto concluído",
- "--status-warning-ink": "Texto de atenção",
- "--status-info-ink": "Texto informativo",
- "--color-danger": "Vermelho oficial",
- "--color-success": "Verde oficial",
- "--color-warning": "Amarelo oficial",
- "--color-info": "Azul oficial",
- "--action-add": "Adicionar",
- "--on-action-add": "Texto em adicionar"
+ "--color-danger": "Perigo MMU",
+ "--color-success": "Concluído MMU",
+ "--color-warning": "Atenção MMU",
+ "--color-info": "Informação MMU",
+ "--action-add": "Adicionar MMU"
 };
 const ALL=new Set(SECTIONS.flatMap(x=>x.keys));
 let base=new Map();
@@ -193,7 +165,9 @@ function migrateStored(s){
   ['--priority-principal-ink','--priority-principal'],
   ['--priority-alta-ink','--priority-alta'],
   ['--priority-principal-on-fill','--priority-principal'],
-  ['--priority-alta-on-fill','--priority-alta']
+  ['--priority-alta-on-fill','--priority-alta'],
+  ['--shadow-subtle','--shadow'],
+  ['--shadow-toast','--shadow']
  ];
  for(const theme of ['light','dark']){
   for(const [alias,target] of aliases){
@@ -294,8 +268,8 @@ function colorControl(key){
 export function renderTokenEditor(){
  const cat=SECTIONS.find(x=>x.id===section)||SECTIONS[0], changedCount=count();
  return `<div class="token-editor">
-  <div class="row"><div><h1>Editor de Tokens</h1><p class="small">31 cores-base compartilhadas · os usos derivados são automáticos.</p></div><button type="button" class="ghost mini" data-action="token-back">Voltar</button></div>
-  <p class="tip" id="token-legacy-notice" ${(Object.keys(legacyOverrides.light).length+Object.keys(legacyOverrides.dark).length)?'':'hidden'}>Cores antigas de funções específicas foram preservadas no relatório e no backup local. Para novas alterações, use as cores-base compartilhadas.</p>
+  <div class="row"><div><h1>Editor de Tokens</h1><p class="small">20 cores-base compartilhadas · os usos derivados são automáticos.</p></div><button type="button" class="ghost mini" data-action="token-back">Voltar</button></div>
+  <p class="tip" id="token-legacy-notice" ${(Object.keys(legacyOverrides.light).length+Object.keys(legacyOverrides.dark).length)?'':'hidden'}>Personalizações antigas sem correspondência direta estão preservadas no backup e no JSON copiado. Escolha novamente apenas as que precisar.</p>
   <div class="token-toolbar">
     <span class="small">Tema de prévia</span>
     <div class="theme-options" role="group" aria-label="Editar cores do tema">

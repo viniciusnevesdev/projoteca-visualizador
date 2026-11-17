@@ -1,38 +1,26 @@
-/* Projoteca: cores-base independentes. Variações visuais são derivadas em styles.css. */
-/* Editar o TOM aqui altera todos os usos da mesma cor, em ambos os temas. */
-/* Acessibilidade: os 4 tons de texto de estados são exceções deliberadas. */
+/* Projoteca — 20 cores-base editáveis (tema claro/escuro). */
+/* Superfícies secundárias, contraste, sombras de avisos e estados são derivados em styles.css. */
+/* Cores semânticas MMU: manter valores oficiais; estilos de texto derivam delas. */
 :root {
   color-scheme: light dark;
   /* Estrutura */
   --bg: light-dark(#f3f5f9,#10151e);
   --surface: light-dark(#ffffff,#19212e);
-  --surface2: light-dark(#edf1f7,#202b3a);
-  --surface3: light-dark(#e1e9f5,#2c3a4e);
   --ink: light-dark(#1c2a3d,#f1f5fb);
   --muted: light-dark(#526176,#b3c0d2);
   --line: light-dark(#d5dce7,#354359);
   --brand: light-dark(#076BD7,#b6cdf2);
-  --on-brand: light-dark(#ffffff,#172a44);
-  --nav-bg: light-dark(#fffffff5,#19212ef5);
-  --shadow-subtle: light-dark(#00000012,#00000033);
-  --shadow-toast: light-dark(#00000024,#00000044);
-  --dialog-backdrop: light-dark(#121b37a0,#02040abf);
-  /* Semântica oficial MMU */
+  --shadow: light-dark(#00000012,#00000033);
+  /* Semânticas oficiais MMU */
   --color-danger: #E22400;
   --color-success: #34C759;
   --color-warning: #FFB501;
   --color-info: #0189FB;
   --action-add: #30BCFF;
-  --on-action-add: #000000;
-  /* Tons de texto acessíveis para estados */
-  --status-danger-ink: light-dark(#9A2A1F,#ff8f76);
-  --status-success-ink: light-dark(#116844,#8de5b3);
-  --status-warning-ink: light-dark(#82520A,#ffd07f);
-  --status-info-ink: light-dark(#0A6399,#85c9ff);
-  /* Importância da Projoteca */
+  /* Importância */
   --priority-principal: light-dark(#9236EF,#d9a4ff);
   --priority-alta: light-dark(#B46CE9,#c3afe0);
-  /* Tipos da Projoteca */
+  /* Identificação de conteúdo */
   --type-project: light-dark(#098DF0,#88caff);
   --type-idea: light-dark(#008F91,#7CE1D8);
   --type-decision: light-dark(#FF9F50,#f0be95);

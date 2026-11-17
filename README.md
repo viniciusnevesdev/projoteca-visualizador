@@ -131,3 +131,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - O editor exibe os 31 tokens reais. Backup das personalizações anteriores preservado em localStorage (projoteca.token-overrides.backup-v019), com cópia dos tokens descontinuados no campo legacy do JSON e no relatório Copiar. Apenas equivalentes seguros migram automaticamente; outros ajustes podem exigir nova escolha.
 - Corrigida a sobreposição do bloco Copiar alterações (não fica mais fixo).
 - Testes estáticos e navegador Firefox; não inclui alteração do ZIP privado nem da matriz documental.
+
+
+## v0.1.11 — Compactação de 31 para 20 cores-base reais
+- A estrutura cromática do código fonte passou a ter exatamente 20 declarações editáveis em tokens.css: Estrutura 7, MMU 5, Importância 2, Tipos 6. Não se trata apenas de filtro na interface.
+- Superfícies secundárias e destacadas são variações automáticas de surface + line; barra inferior compartilha surface; texto sobre cor principal deriva de surface/bg; um shadow atende sombras pequenas e de avisos, que diferem pelo tamanho/desfoque.
+- Overlay de diálogos deriva de ink/bg. Textos semânticos derivam das cinco cores oficiais MMU, com contraste diferente para claro/escuro; verificar visual/contraste após alterar drasticamente as cores-base.
+- Editor visual lista somente os 20 tokens de tokens.css. Personalizações anteriores continuam em legacy e no backup local. A sombra subtil/toast migra para shadow quando não já definida; as demais variações sem correspondência segura ficam preservadas, não se inventa uma equivalência.
+- Caches/JS/CSS versionados; testes automáticos e browser smoke. Nenhuma alteração em Conteúdo.zip, Matriz.zip ou catálogos.

@@ -36,8 +36,8 @@ test('Old customized tokens are preserved and compatible hues migrate to compact
  const oldDocument=globalThis.document,oldStorage=globalThis.localStorage,oldComputed=globalThis.getComputedStyle;
  const memory=new Map();
  const oldConfig={format:'projoteca-token-changes-v1',themes:{
-  light:{'--priority-principal-bg':'#e9ceff'},
-  dark:{'--priority-alta-ink':'#c3afe0','--priority-principal-fill':'#202b3a','--priority-principal-on-fill':'#d9a4ff'}
+  light:{'--priority-principal-bg':'#e9ceff','--status-warning-ink':'#82520A','--shadow-subtle':'#00000012'},
+  dark:{'--priority-alta-ink':'#c3afe0','--priority-principal-fill':'#202b3a','--priority-principal-on-fill':'#d9a4ff','--shadow-toast':'#00000044'}
  }};
  memory.set(TOKEN_STORAGE,JSON.stringify(oldConfig));
  const style={textContent:''};
@@ -56,6 +56,10 @@ test('Old customized tokens are preserved and compatible hues migrate to compact
   const state=getEditorState();
   assert.equal(state.overrides.dark['--priority-alta'],'#C3AFE0');
   assert.equal(state.overrides.dark['--priority-principal'],'#D9A4FF');
+  assert.equal(state.overrides.light['--shadow'],'#00000012');
+  assert.equal(state.overrides.dark['--shadow'],'#00000044');
+  assert.ok(!state.overrides.light['--status-warning-ink']);
+  assert.match(buildCopyText(),/#82520A/);
   assert.ok(memory.has(LEGACY_STORAGE),'Original archive should remain accessible');
   assert.match(buildCopyText(),/legacy/);
   assert.match(buildCopyText(),/#202B3A/);
