@@ -181,3 +181,12 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Área clicável dos botões compactos expandida verticalmente até pelo menos 44px por pseudo-elemento transparente (sem esticar o preenchimento visual). Sem expansão horizontal que sobreponha controles vizinhos.
 - Navegação inferior e botões só de ícone permanecem 44px. Campos de digitação mantêm seu tamanho próprio e fonte mínima 16px.
 - Demais elementos de função especializada (linhas de editor, ferramentas de várias linhas) preservam dimensões próprias. Nenhuma cor ou arquivo de conteúdo modificado.
+
+
+## v0.1.17 — Hierarquia e cores semanticas nas Pendencias
+
+- Margens entre Catálogo/Programação e título reduzidas; título e subtítulo mais próximos; filtros e seção com menor distância. Espaçamentos compartilhados em spacing.css.
+- Aviso Aprovar ou reprovar usa raio de cartão, não cápsula.
+- Cartões de decisões/ações distintos dos cartões azuis de projeto: fundo neutro e acentos por categoria (decisão, pendência, regra).
+- Botões Aprovar/Reprovar usam classes compartilhadas na fábrica de botões para regras e tarefas, sempre derivando de --color-success e --color-danger, sem criar cores novas.
+- Dados, arquivo ZIP, matriz, cores oficiais e opções locais preservados.

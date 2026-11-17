@@ -58,7 +58,7 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
 /* Situacao / tipo de conteudo separados */
 .status-label{color:light-dark(color-mix(in srgb,var(--color-warning) 48%,var(--ink)),color-mix(in srgb,var(--color-warning) 62%,var(--ink)))}
 .status-aguardando_decisao,
-.status-sem_opiniao_usuario{border-left:3px solid var(--color-info);background:light-dark(color-mix(in srgb,var(--color-info) 12%,var(--surface)),var(--surface))}
+.status-sem_opiniao_usuario{border-left:3px solid var(--type-decision);background:var(--surface)}
 
 .group-aguardando_decisao .icon{color:var(--color-warning)}
 .group-sem_opiniao_usuario .icon{color:var(--color-info)}
@@ -153,4 +153,24 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
   height:max(100%,var(--area-toque-minima));
   transform:translateY(-50%);
   background:transparent;
+}
+/* Pendencias: hierarquia distinta de outras areas. */
+.environment.antes-pendencias{margin-bottom:var(--espaco-ambiente-pendencias)}
+.pagina-pendencias .page{gap:var(--espaco-blocos-pendencias)}
+.pagina-pendencias .page-title{margin-bottom:0}
+.pagina-pendencias .page-title .kicker{margin-top:var(--espaco-titulo-subtitulo-pendencias)}
+.pagina-pendencias .tip{border-radius:var(--radius-card)}
+.pagina-pendencias .chips + .stack{margin-top:var(--espaco-filtros-secao-pendencias)}
+/* Decisoes nao sao projetos azuis: superficie neutra, acentos por tipo. */
+.pagina-pendencias .pending-card{background:var(--surface)}
+/* Acoes usam apenas tokens semanticos oficiais, em ambos temas. */
+.acao-aprovar{
+ color:light-dark(color-mix(in srgb,var(--color-success) 48%,var(--ink)),color-mix(in srgb,var(--color-success) 70%,var(--ink)));
+ background:color-mix(in srgb,var(--color-success) 17%,var(--surface));
+ border-color:color-mix(in srgb,var(--color-success) 48%,var(--line));
+}
+.acao-reprovar{
+ color:light-dark(color-mix(in srgb,var(--color-danger) 70%,var(--ink)),color-mix(in srgb,var(--color-danger) 65%,var(--ink)));
+ background:color-mix(in srgb,var(--color-danger) 13%,var(--surface));
+ border-color:color-mix(in srgb,var(--color-danger) 48%,var(--line));
 }

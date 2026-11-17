@@ -12,6 +12,11 @@
   --espaco-extra: 24px;
   --espaco-maximo: 32px;
   /* Valores por funcao: cada um referencia a escala comum. */
+  /* Pendencias: distancias com papel semantico compartilhado. */
+  --espaco-ambiente-pendencias: var(--espaco-pequeno);
+  --espaco-titulo-subtitulo-pendencias: var(--espaco-minimo);
+  --espaco-blocos-pendencias: var(--espaco-pequeno);
+  --espaco-filtros-secao-pendencias: var(--espaco-micro);
   --espaco-dentro-cartao: var(--espaco-medio);
   --espaco-entre-elementos-cartao: var(--espaco-curto);
   --espaco-entre-cartoes: var(--espaco-pequeno);

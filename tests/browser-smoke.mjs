@@ -73,6 +73,8 @@ try{
  await click('[data-tab=pendencias]');
  await check('Approve and reject visual 38px, touch region 44px',"(()=>{const btns=['approve-rule','reject-rule'].map(a=>document.querySelector('[data-action='+a+']'));return btns.every(b=>b && Math.abs(b.getBoundingClientRect().height-38)<1 && parseFloat(getComputedStyle(b,'::after').height)>=44)})()");
 
+ await check('Pending spacing, tip corners and compact page',"(()=>{const m=document.querySelector('#main'),e=document.querySelector('.environment'),k=m?.querySelector('.kicker'),tip=m?.querySelector('.tip'),page=m?.querySelector('.page');return !!(m?.classList.contains('pagina-pendencias')&&e.classList.contains('antes-pendencias')&&k&&tip&&page&&Math.abs(parseFloat(getComputedStyle(k).marginTop)-2)<1&&Math.abs(parseFloat(getComputedStyle(tip).borderTopLeftRadius)-18)<1&&parseFloat(getComputedStyle(page).rowGap)<=8)})()");
+ await check('Approvals in green, rejections in red',"(()=>{const a=document.querySelector('.acao-aprovar'),b=document.querySelector('.acao-reprovar');if(!a||!b)return false;const x=getComputedStyle(a),y=getComputedStyle(b);return x.backgroundColor!==y.backgroundColor&&x.color!==y.color&&x.borderTopColor!==y.borderTopColor})()");
  await check('All pending categories and rules',"['Aguardando decisão','Sem sua opinião','Aprovado · não implementado','Ações dos projetos','Regras do catálogo'].every(s=>document.querySelector('#main').innerText.includes(s))");
  await click('[data-action=approve-rule][data-id=g1]');
  await check('Approved rule stays visible without execution',"!document.querySelector('[data-action=approve-rule][data-id=g1]') && document.querySelector('.status-aprovado_nao_implementado').innerText.includes('Proposta fictícia')");
@@ -126,7 +128,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=026')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=026')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=027')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=027')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');
