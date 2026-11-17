@@ -7,7 +7,7 @@ const style=read('styles.css');
 const app=read('app.js');
 const html=read('index.html');
 test('One color source with three independent families',()=>{
- assert.match(html,/href="\.\/tokens\.css"/);
+ assert.match(html,/href="\.\/tokens\.css\?v=017"/);
  assert.match(tokens,/color-scheme:light dark/);
  for(const name of ['--status-success','--status-warning','--status-danger','--priority-principal','--priority-alta','--priority-normal','--type-project','--type-idea','--type-decision','--type-file','--type-pending','--type-rule']){
   assert.ok(tokens.includes(name+':'),name);
@@ -31,4 +31,15 @@ test('Light theme vibrancy isolated from dark theme',()=>{
  assert.match(style,/\.stats \.stat-principal\{background:var\(--priority-principal-bg\)/);
  assert.match(style,/\.status-aguardando_decisao\{[^}]*background:var\(--status-warning-card-bg\)/);
  assert.doesNotMatch(style,/#[a-fA-F0-9]{3,8}\b/);
+});
+
+test('Vivid priority fills and versioned style assets avoid stale PWA CSS',()=>{
+ assert.match(tokens,/--priority-principal-fill:light-dark\(#8B32E8/);
+ assert.match(style,/\.priority-principal \.priority-pill\{[^}]*background:var\(--priority-principal-fill\)/);
+ assert.match(html,/href="\.\/tokens\.css\?v=017"/);
+ assert.match(html,/href="\.\/styles\.css\?v=017"/);
+ const sw=read('sw.js');
+ assert.match(sw,/event\.request\.mode==='navigate'/);
+ assert.match(sw,/fetch\(event\.request\)/);
+ assert.match(sw,/\.\/tokens\.css\?v=017/);
 });

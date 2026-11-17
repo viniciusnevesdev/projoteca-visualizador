@@ -92,3 +92,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Prioridades passam a ter fundos violetas/lilas; estatisticas, cards de decisao e legenda ganham tonalidades claras suaves.
 - Cores do tema escuro mantidas nos mesmos valores de v0.1.5. Todas as cores continuam em tokens.css; styles.css não tem hexadecimais.
 - Decisao nao concluida continua amarela, nao verde; verde reservado a conclusao efetiva.
+
+
+## v0.1.7 — realce cromático perceptível no tema claro
+- Relato do usuário: v0.1.6 ainda parecia escura/apagada no iPhone; verificação de GitHub Pages servindo v0.1.6 confirmada.
+- Acentos de luz e saturação agora são aplicados a superfícies e etiquetas visíveis, não apenas texto. Principal recebe tarja roxa sólida; alta recebe lilás preenchido. Cartões de projeto/ideia, estatísticas, marca e navegação têm fundos diferenciados.
+- Modo escuro preserva a paleta de v0.1.6 via segundo valor light-dark. Cada cor fica centralizada em tokens.css; CSS de componentes não contém hexadecimais.
+- SVGs MMU com licença não comprovada continuam de fora. Implementação de ajustes e ZIP privados preservados.
+- Cache: estilos com URL versionada e navegação network-first (offline usa HTML cacheado). Link com index.html?versao=017 permite forçar HTML atualizado, mas persistência do cache Safari continua sujeita ao sistema.

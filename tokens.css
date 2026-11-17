@@ -10,7 +10,7 @@
  --ink:light-dark(#1c2a3d,#f1f5fb);
  --muted:light-dark(#526176,#b3c0d2);
  --line:light-dark(#d5dce7,#354359);
- --brand:light-dark(#315e9a,#b6cdf2);
+ --brand:light-dark(#076BD7,#b6cdf2);
  --on-brand:light-dark(#ffffff,#172a44);
  --nav-bg:light-dark(#fffffff5,#19212ef5);
  --shadow-subtle:light-dark(#00000012,#00000033);
@@ -34,37 +34,48 @@
  --status-warning-ink:light-dark(#82520A,#ffd07f);
  --status-info-ink:light-dark(#0A6399,#85c9ff);
  --status-success-bg:light-dark(#E1FAEB,transparent);
- --status-warning-bg:light-dark(#FFF2CE,var(--surface2));
+ --status-warning-bg:light-dark(#FFE8A6,var(--surface2));
  --status-warning-chip-bg:light-dark(#FFF2CE,transparent);
- --status-info-bg:light-dark(#E0F3FF,transparent);
- --status-warning-card-bg:light-dark(#FFFAEC,var(--surface));
- --status-info-card-bg:light-dark(#F1F9FF,var(--surface));
+ --status-info-bg:light-dark(#D6EFFF,transparent);
+ --status-warning-card-bg:light-dark(#FFF3CD,var(--surface));
+ --status-info-card-bg:light-dark(#E6F4FF,var(--surface));
  /* 2. Importancia Projoteca: independente da fase */
- --priority-principal:light-dark(#A650F4,#d9a4ff);
- --priority-alta:light-dark(#BA83F1,#c3afe0);
+ --priority-principal:light-dark(#9236EF,#d9a4ff);
+ --priority-alta:light-dark(#B46CE9,#c3afe0);
  --priority-normal:var(--muted);
  /* Principal/alta: contorno vivo, letras legíveis, fundo luminoso. */
  --priority-principal-ink:light-dark(#692B99,#d9a4ff);
  --priority-alta-ink:light-dark(#70488F,#c3afe0);
- --priority-principal-bg:light-dark(#F2E1FF,var(--surface2));
- --stat-accent-width:light-dark(3px,0px);
- --priority-alta-bg:light-dark(#F5EAFE,var(--surface2));
+ --priority-principal-bg:light-dark(#E9CEFF,var(--surface2));
+ --stat-accent-width:light-dark(5px,0px);
+ --priority-alta-bg:light-dark(#EBD5FA,var(--surface2));
  --priority-principal-chip-bg:light-dark(#F2E1FF,transparent);
+ /* Saturação aplicada nos pequenos elementos, sem sacrificar o texto. */
+ --priority-principal-fill:light-dark(#8B32E8,var(--surface2));
+ --priority-principal-on-fill:light-dark(#FFFFFF,var(--priority-principal));
+ --priority-alta-fill:light-dark(#C381F6,var(--surface2));
+ --priority-alta-on-fill:light-dark(#251236,var(--priority-alta));
+ --brand-highlight:light-dark(#D4E9FF,var(--surface3));
  /* 3. Tipo de conteudo Projoteca */
- --type-project:light-dark(#159EFF,#88caff);
- --type-idea:light-dark(#AB62F3,#d0b5ff);
+ --type-project:light-dark(#098DF0,#88caff);
+ --type-idea:light-dark(#AC48F2,#d0b5ff);
  --type-decision:light-dark(#FF9F50,#f0be95);
  --type-file:light-dark(#0CBABB,#8dd5d9);
  --type-pending:light-dark(#ECAA52,#dfba89);
  --type-rule:light-dark(#83A0D3,#aabedb);
  /* Fundos luminosos para categorias no modo claro. */
- --type-project-bg:light-dark(#E4F5FF,var(--surface2));
+ --type-project-bg:light-dark(#D9EEFF,var(--surface2));
  --type-project-ink:light-dark(#0B6197,#88caff);
- --type-idea-bg:light-dark(#F4E8FF,var(--surface2));
+ --type-idea-bg:light-dark(#EED9FF,var(--surface2));
  --type-idea-ink:light-dark(#682B9A,#d0b5ff);
  --type-file-bg:light-dark(#E3FAFA,transparent);
  --type-file-ink:light-dark(#0B686B,#8dd5d9);
  --type-idea-chip-bg:light-dark(#F4E8FF,transparent);
+ --type-project-card-bg:light-dark(#E5F3FF,var(--surface));
+ --type-idea-card-bg:light-dark(#F2E1FF,var(--surface));
+ --type-project-on-fill:light-dark(#073C6C,var(--ink));
+ --type-idea-on-fill:light-dark(#4E197D,var(--ink));
+ --type-file-on-fill:light-dark(#064C56,var(--ink));
 }
 :root[data-theme="light"] {color-scheme:light}
 :root[data-theme="dark"] {color-scheme:dark}

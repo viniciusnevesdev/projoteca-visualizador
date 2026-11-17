@@ -39,11 +39,11 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
 .legend-file{color:var(--type-file-ink);border-color:var(--type-file);background:var(--type-file-bg)}
 /* Prioridade nunca substitui estado */
 .priority-pill{border:1px solid currentColor;font-weight:700;background:var(--surface2)}
-.priority-principal .priority-pill{color:var(--priority-principal-ink);border-color:var(--priority-principal);background:var(--priority-principal-bg)}
-.priority-alta .priority-pill{color:var(--priority-alta-ink);border-color:var(--priority-alta);background:var(--priority-alta-bg)}
+.priority-principal .priority-pill{color:var(--priority-principal-on-fill);border-color:var(--priority-principal-fill);background:var(--priority-principal-fill)}
+.priority-alta .priority-pill{color:var(--priority-alta-on-fill);border-color:var(--priority-alta-fill);background:var(--priority-alta-fill)}
 .priority-normal .priority-pill{color:var(--priority-normal)}
-.project-entry{border-inline-start:3px solid var(--type-project)}
-.project-entry.type-idea{border-inline-start-color:var(--type-idea)}
+.project-entry{border-inline-start:5px solid var(--type-project);background:var(--type-project-card-bg)}
+.project-entry.type-idea{border-inline-start-color:var(--type-idea);background:var(--type-idea-card-bg)}
 .stats .stat-project{background:var(--type-project-bg);border-inline-start:var(--stat-accent-width) solid var(--type-project)}.stats .card strong{color:var(--type-project-ink)}
 .stats .stat-principal{background:var(--priority-principal-bg);border-inline-start:var(--stat-accent-width) solid var(--priority-principal)}.stats .stat-principal strong{color:var(--priority-principal-ink)}
 .stats .stat-idea{background:var(--type-idea-bg);border-inline-start:var(--stat-accent-width) solid var(--type-idea)}.stats .stat-idea strong{color:var(--type-idea-ink)}
@@ -65,3 +65,11 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
 .kind-folder>.icon:first-child{color:var(--type-project)}
 .kind-file>.icon:first-child{color:var(--type-file)}
 .source-notice{border-color:var(--status-info)}
+
+/* Destaques vivos para interface clara; no escuro, os tokens retornam às cores anteriores.
+   O preenchimento intenso fica nos elementos pequenos; textos sobre cartões seguem legíveis. */
+.logo{background:var(--brand-highlight)}
+.empty .symbol{background:var(--brand-highlight)}
+.environment .env.active{background:var(--brand-highlight)}
+.bottom button.selected{background:var(--brand-highlight)}
+/* A intensidade das cores deve comunicar papel e prioridade, nunca reinterpretar o MMU. */
