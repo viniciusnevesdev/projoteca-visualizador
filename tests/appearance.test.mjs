@@ -7,7 +7,7 @@ const style=read('styles.css');
 const app=read('app.js');
 const html=read('index.html');
 test('One color source with three independent families',()=>{
- assert.match(html,/href="\.\/tokens\.css\?v=018"/);
+ assert.match(html,/href="\.\/tokens\.css\?v=019"/);
  assert.match(tokens,/color-scheme:light dark/);
  for(const name of ['--status-success','--status-warning','--status-danger','--priority-principal','--priority-alta','--priority-normal','--type-project','--type-idea','--type-decision','--type-file','--type-pending','--type-rule']){
   assert.ok(tokens.includes(name+':'),name);
@@ -36,12 +36,12 @@ test('Light theme vibrancy isolated from dark theme',()=>{
 test('Vivid priority fills and versioned style assets avoid stale PWA CSS',()=>{
  assert.match(tokens,/--priority-principal-fill:light-dark\(#8B32E8/);
  assert.match(style,/\.priority-principal \.priority-pill\{[^}]*background:var\(--priority-principal-fill\)/);
- assert.match(html,/href="\.\/tokens\.css\?v=018"/);
- assert.match(html,/href="\.\/styles\.css\?v=018"/);
+ assert.match(html,/href="\.\/tokens\.css\?v=019"/);
+ assert.match(html,/href="\.\/styles\.css\?v=019"/);
  const sw=read('sw.js');
  assert.match(sw,/event\.request\.mode==='navigate'/);
  assert.match(sw,/fetch\(event\.request\)/);
- assert.match(sw,/\.\/tokens\.css\?v=018/);
+ assert.match(sw,/\.\/tokens\.css\?v=019/);
 });
 
 test('Statistics stay neutral; project cards retain soft distinct tints',()=>{
@@ -54,4 +54,10 @@ test('Statistics stay neutral; project cards retain soft distinct tints',()=>{
  }
  assert.match(style,/\.project-entry\{[^}]*background:var\(--type-project-card-bg\)/);
  assert.match(style,/\.project-entry\.type-idea\{[^}]*background:var\(--type-idea-card-bg\)/);
+});
+
+test('Statistics accent has valid lengths in light and dark',()=>{
+ assert.match(tokens,/--stat-accent-width:4px/);
+ assert.match(tokens,/data-theme="dark"\]\{--stat-accent-width:0px/);
+ assert.doesNotMatch(tokens,/light-dark\([0-9]+px,/);
 });

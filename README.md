@@ -110,3 +110,14 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Cartões: projeto azul-acinzentado suave (type-project-card-bg), ideia verde-água suave (type-idea-card-bg), borda de 3px. No escuro continuam com fundo anterior. Principal mantém etiqueta roxa preenchida.
 - Cores apenas em tokens.css; catálogo privado, funções e ZIP não alterados.
 - Mesmo no escuro, a classificação Ideia usa turquesa em vez de repetir o violeta da prioridade Principal.
+
+
+## v0.1.9 — Editor de Tokens e Copiar alterações
+
+- Ajustes > Editar cores dos tokens. 5 grupos: Estrutura, Importância, Tipos, Estados, MMU/Ações. Valores originais lidos do próprio tokens.css; sem duplicar paleta HEX no JavaScript.
+- Edição: seletor nativo de cor, HEX (6/8 dígitos), HSL (matiz/saturação/luminosidade), prévia instantânea. Prévia claro/escuro altera temporariamente a aparência somente enquanto o editor está aberto.
+- Grava alterações localmente em localStorage, chave projoteca.token-overrides.v1, sem afetar o ZIP privado; importação/exportação de JSON, desfazer/refazer (até 40), restaurar token/categoria/tudo.
+- Botão ao final Copiar alterações: nomes CSS, tema claro/escuro e JSON estruturado; colar no chat para implementar depois no código oficial. As alterações locais são independentes de commits/publicações.
+- Cores canônicas MMU são valores padrão do repositório; o editor permite sobreposições locais sem modificar os arquivos do modelo.
+- Service worker atualizado para suportar funcionamento offline, com CSS e script principal versionados contra cache antigo.
+- Correção retroativa: stat-accent-width usava light-dark(4px,0px), inválido para comprimento; agora valores separados com media query e tema forçado.

@@ -73,3 +73,44 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
 .environment .env.active{background:var(--brand-highlight)}
 .bottom button.selected{background:var(--brand-highlight)}
 /* A intensidade das cores deve comunicar papel e prioridade, nunca reinterpretar o MMU. */
+
+/* Editor de Tokens: compacto e acessível. Cores definidas somente em tokens.css. */
+.token-editor{display:grid;gap:14px;min-width:0}
+.token-toolbar,.token-preview,.token-utilities,.token-transfer,.token-copy-footer{display:grid;gap:10px;min-width:0}
+.token-toolbar,.token-preview,.token-copy-footer{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-card);padding:14px}
+.token-toolbar .theme-options{grid-template-columns:1fr 1fr}
+.token-groups{margin:0}
+.token-search-label{display:grid;gap:5px;color:var(--muted);font-size:13px}
+.token-search-label input{min-height:44px}
+.token-list{display:grid;gap:6px;min-width:0}
+.token-row{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}
+.token-row[hidden]{display:none}
+.token-select{display:flex;align-items:center;gap:11px;text-align:left;width:100%;border:0;border-radius:0;padding:10px 11px;background:transparent;color:var(--ink);min-height:52px;min-width:0}
+.token-select[aria-expanded="true"]{background:var(--surface2)}
+.token-swatch,.token-chip{display:block;flex:none;background:var(--sample);border:1px solid var(--line);box-shadow:inset 0 0 0 1px var(--shadow-subtle);border-radius:9px}
+.token-swatch{width:35px;height:35px}.token-chip{width:44px;height:44px}
+.token-description{flex:1;display:grid;min-width:0;gap:2px}
+.token-description strong{font-size:13px;line-height:1.35}
+.token-description small{color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.token-value{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;flex:none}
+.token-controls{display:grid;gap:14px;padding:13px;border-top:1px solid var(--line)}
+.token-controls-head{display:grid;grid-template-columns:44px minmax(70px,1fr) minmax(98px,1.1fr);gap:10px;align-items:end}
+.token-picker-label,.token-hex-label{display:grid;gap:5px;font-size:12px;color:var(--muted);min-width:0}
+.token-picker-label input{width:100%;min-height:44px;padding:3px;cursor:pointer;border-radius:10px}
+.token-hex-label input{width:100%;min-height:44px;padding:7px;font-size:14px;font-family:ui-monospace,SFMono-Regular,monospace}
+.token-hex-label input[aria-invalid="true"]{outline:2px solid var(--status-danger)}
+.token-sliders{display:grid;gap:11px}
+.token-slider{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.token-slider span{display:flex;justify-content:space-between}
+.token-slider input{appearance:auto;min-height:25px;width:100%;padding:0;border:0;background:transparent;accent-color:var(--brand)}
+.token-controls .row code{max-width:55%;overflow-wrap:anywhere}
+.token-controls .row button{flex-shrink:0}
+.token-preview .grid2{gap:8px}
+.token-preview .card{padding:12px}
+.token-preview .stats strong{font-size:23px}
+.token-preview>.project-entry{display:grid;gap:10px}
+.token-utilities,.token-transfer{grid-template-columns:repeat(2,minmax(0,1fr))}
+.token-utilities button,.token-transfer button{min-height:44px}
+.token-copy-footer{position:sticky;bottom:calc(5px + env(safe-area-inset-bottom));z-index:10;box-shadow:0 3px 12px var(--shadow-subtle);border-color:var(--brand)}
+.token-copy-footer button{min-height:48px}
+.token-copy-footer p{margin:0}

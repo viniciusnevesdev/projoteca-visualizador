@@ -47,7 +47,7 @@
  --priority-principal-ink:light-dark(#692B99,#d9a4ff);
  --priority-alta-ink:light-dark(#70488F,#c3afe0);
  --priority-principal-bg:light-dark(#E9CEFF,var(--surface2));
- --stat-accent-width:light-dark(4px,0px);
+ --stat-accent-width:4px;
  --stat-card-bg:var(--surface);
  --project-card-stroke-width:3px;
  --priority-alta-bg:light-dark(#EBD5FA,var(--surface2));
@@ -81,3 +81,5 @@
 }
 :root[data-theme="light"] {color-scheme:light}
 :root[data-theme="dark"] {color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--stat-accent-width:0px}}
+:root[data-theme="dark"]{--stat-accent-width:0px}
