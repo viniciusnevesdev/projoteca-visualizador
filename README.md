@@ -84,3 +84,11 @@ Seletores de ambientes e fontes, botoes de acao, icones, filtros, navegacao e ca
 ### Testes de interface
 
 Teste opcional de navegador cobre Ajustes, temas forçados/automático e navegação em 320/390/768px. Testes automáticos verificam tokens CSS. Tonalidades específicas são padrões iniciais, sujeitos a avaliação visual do usuário.
+
+
+## v0.1.6 — Reforco da paleta no tema claro
+- Feedback do usuário: cores da v0.1.5 agradam no modo escuro, mas ficam apagadas no tema claro.
+- Acentos claros de status, prioridade e tipo passam a ser mais luminosos e saturados; textos ganham tokens *-ink separados para manter contraste.
+- Prioridades passam a ter fundos violetas/lilas; estatisticas, cards de decisao e legenda ganham tonalidades claras suaves.
+- Cores do tema escuro mantidas nos mesmos valores de v0.1.5. Todas as cores continuam em tokens.css; styles.css não tem hexadecimais.
+- Decisao nao concluida continua amarela, nao verde; verde reservado a conclusao efetiva.

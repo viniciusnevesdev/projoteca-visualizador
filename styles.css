@@ -32,36 +32,36 @@ button[data-action="new-idea"],button[data-action="add-note"],button[data-action
 .settings-note{font-size:13px;color:var(--muted)}
 .settings-legend{display:flex;flex-wrap:wrap;gap:8px}
 .legend-item{border:1px solid currentColor;border-radius:var(--radius-pill);padding:5px 10px;font-size:12px;font-weight:650}
-.legend-completed{color:var(--status-success)}
-.legend-attention{color:var(--status-warning)}
-.legend-principal{color:var(--priority-principal)}
-.legend-idea{color:var(--type-idea)}
-.legend-file{color:var(--type-file)}
+.legend-completed{color:var(--status-success-ink);border-color:var(--status-success);background:var(--status-success-bg)}
+.legend-attention{color:var(--status-warning-ink);border-color:var(--status-warning);background:var(--status-warning-chip-bg)}
+.legend-principal{color:var(--priority-principal-ink);border-color:var(--priority-principal);background:var(--priority-principal-chip-bg)}
+.legend-idea{color:var(--type-idea-ink);border-color:var(--type-idea);background:var(--type-idea-chip-bg)}
+.legend-file{color:var(--type-file-ink);border-color:var(--type-file);background:var(--type-file-bg)}
 /* Prioridade nunca substitui estado */
 .priority-pill{border:1px solid currentColor;font-weight:700;background:var(--surface2)}
-.priority-principal .priority-pill{color:var(--priority-principal)}
-.priority-alta .priority-pill{color:var(--priority-alta)}
+.priority-principal .priority-pill{color:var(--priority-principal-ink);border-color:var(--priority-principal);background:var(--priority-principal-bg)}
+.priority-alta .priority-pill{color:var(--priority-alta-ink);border-color:var(--priority-alta);background:var(--priority-alta-bg)}
 .priority-normal .priority-pill{color:var(--priority-normal)}
 .project-entry{border-inline-start:3px solid var(--type-project)}
 .project-entry.type-idea{border-inline-start-color:var(--type-idea)}
-.stats .card strong{color:var(--type-project)}
-.stats .stat-principal strong{color:var(--priority-principal)}
-.stats .stat-idea strong{color:var(--type-idea)}
-.stats .stat-review strong{color:var(--status-warning)}
+.stats .stat-project{background:var(--type-project-bg);border-inline-start:var(--stat-accent-width) solid var(--type-project)}.stats .card strong{color:var(--type-project-ink)}
+.stats .stat-principal{background:var(--priority-principal-bg);border-inline-start:var(--stat-accent-width) solid var(--priority-principal)}.stats .stat-principal strong{color:var(--priority-principal-ink)}
+.stats .stat-idea{background:var(--type-idea-bg);border-inline-start:var(--stat-accent-width) solid var(--type-idea)}.stats .stat-idea strong{color:var(--type-idea-ink)}
+.stats .stat-review{background:var(--status-warning-bg);border-inline-start:var(--stat-accent-width) solid var(--status-warning)}.stats .stat-review strong{color:var(--status-warning-ink)}
 /* Situacao / tipo de conteudo separados */
-.status-label{color:var(--status-warning)}
-.status-aguardando_decisao{border-left:3px solid var(--status-warning)}
-.status-sem_opiniao_usuario{border-left:3px solid var(--status-info)}
-.status-aprovado_nao_implementado{border-left:3px solid var(--status-warning)}
+.status-label{color:var(--status-warning-ink)}
+.status-aguardando_decisao{border-left:3px solid var(--status-warning);background:var(--status-warning-card-bg)}
+.status-sem_opiniao_usuario{border-left:3px solid var(--status-info);background:var(--status-info-card-bg)}
+.status-aprovado_nao_implementado{border-left:3px solid var(--status-warning);background:var(--status-warning-card-bg)}
 .group-aguardando_decisao .icon{color:var(--status-warning)}
 .group-sem_opiniao_usuario .icon{color:var(--status-info)}
 .group-aprovado_nao_implementado .icon{color:var(--status-warning)}
 .pending-card.type-pending{border-inline-start:3px solid var(--type-pending)}
 .pending-card.type-rule{border-inline-start:3px solid var(--type-rule)}
-.status-approved{color:var(--status-warning)}
-.status-completed{color:var(--status-success)}
-.status-rejected{color:var(--status-danger)}
-.status-open{color:var(--status-info)}
+.status-approved{color:var(--status-warning-ink)}
+.status-completed{color:var(--status-success-ink)}
+.status-rejected{color:var(--status-danger-ink)}
+.status-open{color:var(--status-info-ink)}
 .kind-folder>.icon:first-child{color:var(--type-project)}
 .kind-file>.icon:first-child{color:var(--type-file)}
 .source-notice{border-color:var(--status-info)}

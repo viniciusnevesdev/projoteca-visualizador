@@ -81,6 +81,9 @@ try{
   await check('Theme '+theme,`document.documentElement.dataset.theme==='${theme}' && getComputedStyle(document.documentElement).colorScheme==='${theme}' && localStorage.getItem('projoteca.theme.v1')==='${theme}'`);
   await check('Theme button selected',`document.querySelector('[data-action=theme][data-id=${theme}]').getAttribute('aria-pressed')==='true'`);
   await click('[data-action=settings-close]');
+  await click('[data-tab=painel]');
+  if(theme==='light') await check('Vivid light priority background', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor==='rgb(242, 225, 255)'");
+  else await check('Dark statistics remain uniform', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor===getComputedStyle(document.querySelector('.stats .stat-project')).backgroundColor");
   for(const width of [320,390,768]){
    await viewport(width);
    for(const tab of ['painel','projetos','pendencias','arquivos']){await click(`[data-tab=${tab}]`);await check('Active navigation '+tab,`document.querySelector('.bottom [aria-current=page]').dataset.tab==='${tab}'`);await check(`${theme} ${width}px ${tab} no horizontal overflow`,"document.documentElement.scrollWidth<=innerWidth")}

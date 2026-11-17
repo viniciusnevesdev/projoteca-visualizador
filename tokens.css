@@ -23,22 +23,48 @@
  --color-info:#0189FB; --on-info:#000000;
  --action-add:#30BCFF; --on-action-add:#000000;
  --color-primary:var(--brand); --on-primary:var(--on-brand);
- --status-danger:light-dark(#af280d,#ff8f76);
- --status-success:light-dark(#1e7546,#8de5b3);
- --status-warning:light-dark(#885600,#ffd07f);
- --status-info:light-dark(#145da2,#85c9ff);
+ --status-danger:light-dark(#FF514B,#ff8f76);
+ --status-success:light-dark(#17C777,#8de5b3);
+ --status-warning:light-dark(#FFBA21,#ffd07f);
+ --status-info:light-dark(#159FFF,#85c9ff);
  --status-pending:var(--status-warning);
+ /* Acentos vibrantes e textos contrastantes: papéis separados. */
+ --status-danger-ink:light-dark(#9A2A1F,#ff8f76);
+ --status-success-ink:light-dark(#116844,#8de5b3);
+ --status-warning-ink:light-dark(#82520A,#ffd07f);
+ --status-info-ink:light-dark(#0A6399,#85c9ff);
+ --status-success-bg:light-dark(#E1FAEB,transparent);
+ --status-warning-bg:light-dark(#FFF2CE,var(--surface2));
+ --status-warning-chip-bg:light-dark(#FFF2CE,transparent);
+ --status-info-bg:light-dark(#E0F3FF,transparent);
+ --status-warning-card-bg:light-dark(#FFFAEC,var(--surface));
+ --status-info-card-bg:light-dark(#F1F9FF,var(--surface));
  /* 2. Importancia Projoteca: independente da fase */
- --priority-principal:light-dark(#7438ac,#d9a4ff);
- --priority-alta:light-dark(#84639e,#c3afe0);
+ --priority-principal:light-dark(#A650F4,#d9a4ff);
+ --priority-alta:light-dark(#BA83F1,#c3afe0);
  --priority-normal:var(--muted);
+ /* Principal/alta: contorno vivo, letras legíveis, fundo luminoso. */
+ --priority-principal-ink:light-dark(#692B99,#d9a4ff);
+ --priority-alta-ink:light-dark(#70488F,#c3afe0);
+ --priority-principal-bg:light-dark(#F2E1FF,var(--surface2));
+ --stat-accent-width:light-dark(3px,0px);
+ --priority-alta-bg:light-dark(#F5EAFE,var(--surface2));
+ --priority-principal-chip-bg:light-dark(#F2E1FF,transparent);
  /* 3. Tipo de conteudo Projoteca */
- --type-project:light-dark(#1c689b,#88caff);
- --type-idea:light-dark(#7950a7,#d0b5ff);
- --type-decision:light-dark(#9c572a,#f0be95);
- --type-file:light-dark(#216f78,#8dd5d9);
- --type-pending:light-dark(#93602b,#dfba89);
- --type-rule:light-dark(#5b7390,#aabedb);
+ --type-project:light-dark(#159EFF,#88caff);
+ --type-idea:light-dark(#AB62F3,#d0b5ff);
+ --type-decision:light-dark(#FF9F50,#f0be95);
+ --type-file:light-dark(#0CBABB,#8dd5d9);
+ --type-pending:light-dark(#ECAA52,#dfba89);
+ --type-rule:light-dark(#83A0D3,#aabedb);
+ /* Fundos luminosos para categorias no modo claro. */
+ --type-project-bg:light-dark(#E4F5FF,var(--surface2));
+ --type-project-ink:light-dark(#0B6197,#88caff);
+ --type-idea-bg:light-dark(#F4E8FF,var(--surface2));
+ --type-idea-ink:light-dark(#682B9A,#d0b5ff);
+ --type-file-bg:light-dark(#E3FAFA,transparent);
+ --type-file-ink:light-dark(#0B686B,#8dd5d9);
+ --type-idea-chip-bg:light-dark(#F4E8FF,transparent);
 }
 :root[data-theme="light"] {color-scheme:light}
 :root[data-theme="dark"] {color-scheme:dark}

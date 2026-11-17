@@ -23,3 +23,12 @@ test('Settings control, persist theme locally, isolate from catalog ZIP',()=>{
  assert.match(style,/\.priority-principal/);
  assert.match(style,/\.status-aprovado_nao_implementado/);
 });
+
+test('Light theme vibrancy isolated from dark theme',()=>{
+ for(const token of ['--priority-principal-bg','--priority-principal-ink','--status-warning-bg','--status-warning-ink','--type-project-bg','--type-idea-bg']){
+  assert.match(tokens,new RegExp(token.replaceAll('-','\\-')+':light-dark\\('));
+ }
+ assert.match(style,/\.stats \.stat-principal\{background:var\(--priority-principal-bg\)/);
+ assert.match(style,/\.status-aguardando_decisao\{[^}]*background:var\(--status-warning-card-bg\)/);
+ assert.doesNotMatch(style,/#[a-fA-F0-9]{3,8}\b/);
+});
