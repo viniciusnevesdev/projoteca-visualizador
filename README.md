@@ -164,3 +164,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Ajustes agora usam a etiqueta REAL de Principal e Alta, classes iguais às da biblioteca, em vez de uma imitação em roxo translúcido.
 - Ícone dos Ajustes substituído por engrenagem dentada, não sol.
 - 20 cores e 7 tamanhos de fonte mantidos; dados, ZIP, Matriz e preferências locais não foram alterados.
+
+
+## v0.1.15 — Cartao inteiro clicavel
+
+- Um botao nativo transparente ocupa a area completa do cartao da biblioteca: titulo, descricao, situacao e espacos vazios abrem os detalhes. Nome acessivel e foco por teclado.
+- Removido botao Abrir e convertida a antiga button.linkrow em h2, sem a altura minima artificial de 44px. Titulo e situacao se aproximam das bordas com padding uniforme de --espaco-dentro-cartao.
+- Botoes de projetos filhos permanecem independentes, acima da area clicavel principal.
+- Preservados demais tokens, funcionalidades, descricao completa em Detalhes e catalogo original.

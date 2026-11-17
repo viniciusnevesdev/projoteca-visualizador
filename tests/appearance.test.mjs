@@ -57,12 +57,12 @@ test('Old local choices kept in migration backup, and copy output persists them'
  assert.match(editor,/Copiar alterações/);
 });
 test('Theme and offline version 0.1.11 correct',()=>{
- assert.match(html,/v0\.1\.14/);
- assert.match(html,/tokens\.css\?v=024/);
- assert.match(html,/styles\.css\?v=024/);
- assert.match(sw,/projoteca-visualizador-v024/);
- assert.match(sw,/token-editor\.js\?v=024/);
- assert.match(app,/token-editor\.js\?v=024/);
+ assert.match(html,/v0\.1\.15/);
+ assert.match(html,/tokens\.css\?v=025/);
+ assert.match(html,/styles\.css\?v=025/);
+ assert.match(sw,/projoteca-visualizador-v025/);
+ assert.match(sw,/token-editor\.js\?v=025/);
+ assert.match(app,/token-editor\.js\?v=025/);
  assert.match(tokens,/color-scheme: light dark/);
  assert.match(css,/--stat-accent-width:4px/);
  assert.match(css,/data-theme="dark"/);

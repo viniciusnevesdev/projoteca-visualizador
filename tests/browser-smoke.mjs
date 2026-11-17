@@ -45,8 +45,16 @@ try{
  })()`);
  await wait("document.querySelectorAll('.stats strong').length===4");
  await check('Derived dashboard statistics',"[...document.querySelectorAll('.stats strong')].map(x=>x.textContent).join(',')==='5,2,1,2'");
+ await check('Card has full-surface accessible button, without redundant Abrir', "(()=>{const c=document.querySelector('.project-entry:has(.project-card)');return !!(c?.querySelector(':scope > button.project-card-hitbox[data-action=detail]')&&!c.querySelector('.project-card .ghost')&&c.querySelector('h2.project-title'))})()");
  await check('Parent displays three real child links',"document.querySelectorAll('.tree-child .child-link').length===3");
+ await click('.tree-child .child-link[data-id=filho-a]');
+ await check('Independent child link opens its own project',"document.querySelector('#main h1')?.textContent==='Projeto fictício filho-a'");
+ await click('[data-action=close-detail]');
  await click('[data-tab=projetos]');
+ await check('Top left bottom card padding balanced',"(()=>{const c=document.querySelector('.project-entry:has(.project-card)'),t=c?.querySelector('.project-title'),f=c?.querySelector('.project-card > .row:last-child');if(!c||!t||!f)return false;const r=c.getBoundingClientRect(),tr=t.getBoundingClientRect(),fr=f.getBoundingClientRect();return Math.abs((tr.left-r.left)-(tr.top-r.top))<5&&Math.abs((tr.top-r.top)-(r.bottom-fr.bottom))<5})()");
+ await click('.project-card-hitbox[data-id=raiz]');
+ await check('Card surface opens detail without separate Abrir',"document.querySelector('#main h1')?.textContent==='Projeto fictício raiz'");
+ await click('[data-action=close-detail]');
  for(const [filter,count] of [['todos',5],['ideias',1],['nunca',1],['interrompidos',1],['principais',2]]){await click(`[data-action=filter][data-id=${filter}]`);await check('Semantic filter '+filter,`document.querySelectorAll('.project-card').length===${count}`)}
  await click('[data-action=filter][data-id=todos]');
  await evaluate("document.querySelector('#search').value='filho-a';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}));true");
@@ -114,7 +122,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=024')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=024')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=025')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=025')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');

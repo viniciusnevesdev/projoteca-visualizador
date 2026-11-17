@@ -21,8 +21,8 @@ test('CSS usa apenas os sete tokens e preserva campo com 16px',()=>{
  assert.match(css,/\.token-preview \.stats strong\{[^}]*font-size:var\(--fonte-titulo\)/);
 });
 test('novos CSS e caches versionados offline',()=>{
- assert.match(html,/typography\.css\?v=024/);
- assert.match(html,/v0\.1\.14/);
- assert.match(sw,/typography\.css\?v=024/);
- assert.match(sw,/projoteca-visualizador-v024/);
+ assert.match(html,/typography\.css\?v=025/);
+ assert.match(html,/v0\.1\.15/);
+ assert.match(sw,/typography\.css\?v=025/);
+ assert.match(sw,/projoteca-visualizador-v025/);
 });
