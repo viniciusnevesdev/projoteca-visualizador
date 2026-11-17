@@ -31,3 +31,36 @@ test('Copy format contains only token colors, no catalog contents',()=>{
  assert.doesNotMatch(msg,/catalogo\.json|manifesto\.json/);
  assert.equal(TOKEN_STORAGE,'projoteca.token-overrides.v1');
 });
+test('Old customized tokens are preserved and compatible hues migrate to compact base',async()=>{
+ const {initTokenEditor,getEditorState,buildCopyText,LEGACY_STORAGE,TOKEN_STORAGE}=await import('../token-editor.js');
+ const oldDocument=globalThis.document,oldStorage=globalThis.localStorage,oldComputed=globalThis.getComputedStyle;
+ const memory=new Map();
+ const oldConfig={format:'projoteca-token-changes-v1',themes:{
+  light:{'--priority-principal-bg':'#e9ceff'},
+  dark:{'--priority-alta-ink':'#c3afe0','--priority-principal-fill':'#202b3a','--priority-principal-on-fill':'#d9a4ff'}
+ }};
+ memory.set(TOKEN_STORAGE,JSON.stringify(oldConfig));
+ const style={textContent:''};
+ globalThis.getComputedStyle=()=>({getPropertyValue:()=> '#345678'});
+ globalThis.document={
+  styleSheets:[],
+  getElementById:()=>style,
+  head:{append:()=>{}}
+ };
+ globalThis.localStorage={
+  getItem:k=>memory.get(k)??null,
+  setItem:(k,v)=>memory.set(k,v)
+ };
+ try{
+  initTokenEditor();
+  const state=getEditorState();
+  assert.equal(state.overrides.dark['--priority-alta'],'#C3AFE0');
+  assert.equal(state.overrides.dark['--priority-principal'],'#D9A4FF');
+  assert.ok(memory.has(LEGACY_STORAGE),'Original archive should remain accessible');
+  assert.match(buildCopyText(),/legacy/);
+  assert.match(buildCopyText(),/#202B3A/);
+  assert.match(memory.get(TOKEN_STORAGE),/"legacy"/);
+ }finally{
+  globalThis.document=oldDocument;globalThis.localStorage=oldStorage;globalThis.getComputedStyle=oldComputed;
+ }
+});

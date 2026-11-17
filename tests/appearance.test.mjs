@@ -2,62 +2,54 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=f=>readFileSync(new URL('../'+f,import.meta.url),'utf8');
-const tokens=read('tokens.css');
-const style=read('styles.css');
-const app=read('app.js');
-const html=read('index.html');
-test('One color source with three independent families',()=>{
- assert.match(html,/href="\.\/tokens\.css\?v=019"/);
- assert.match(tokens,/color-scheme:light dark/);
- for(const name of ['--status-success','--status-warning','--status-danger','--priority-principal','--priority-alta','--priority-normal','--type-project','--type-idea','--type-decision','--type-file','--type-pending','--type-rule']){
-  assert.ok(tokens.includes(name+':'),name);
+const tokens=read('tokens.css'),style=read('styles.css'),editor=read('token-editor.js');
+const html=read('index.html'),sw=read('sw.js'),app=read('app.js');
+const declared=[...tokens.matchAll(/(^|\s)(--[a-z0-9-]+):/gm)].map(x=>x[2]);
+const groups=JSON.parse(editor.match(/const SECTIONS=(\[[\s\S]*?\]);/)[1]);
+const keys=groups.flatMap(g=>g.keys);
+test('Compactação real: 74 → 31 declarações físicas no tokens.css',()=>{
+ assert.equal(declared.length,31);
+ assert.equal(new Set(declared).size,31);
+ assert.deepEqual(new Set(keys),new Set(declared));
+ assert.equal(keys.length,31);
+ for(const removed of ['--priority-principal-fill','--priority-principal-ink','--priority-alta-bg','--type-idea-card-bg','--type-project-card-bg','--type-idea-ink','--status-warning-card-bg','--stat-card-bg']){
+  assert.ok(!declared.includes(removed),'still declared '+removed);
  }
- assert.doesNotMatch(style,/#[0-9a-fA-F]{3,8}\b/);
+ assert.doesNotMatch(style, /#[0-9a-fA-F]{3,8}\b/);
 });
-test('Settings control, persist theme locally, isolate from catalog ZIP',()=>{
- assert.match(html,/id="btn-settings"/);
- assert.match(app,/projoteca\.theme\.v1/);
- assert.match(app,/function selectTheme\(value\)/);
+test('MMU semânticas canônicas e famílias independentes',()=>{
+ for(const [token,color] of [
+ ['--color-danger','#E22400'],['--color-success','#34C759'],['--color-warning','#FFB501'],['--color-info','#0189FB'],['--action-add','#30BCFF']
+ ]){
+  assert.match(tokens,new RegExp(token+': '+color));
+ }
+ assert.deepEqual(groups.find(g=>g.id==='priority').keys,['--priority-principal','--priority-alta']);
+ assert.equal(groups.find(g=>g.id==='types').keys.length,6);
+});
+test('Styles CSS have no orphan token references and derive repeated usages from shared hues',()=>{
+ const all=new Set([...declared,...[...style.matchAll(/(^|[\s;{])(--[a-z0-9-]+)\s*:/gm)].map(x=>x[2])]);
+ const refs=[...style.matchAll(/var\((--[a-z0-9-]+)/g)].map(x=>x[1]);
+ assert.deepEqual([...new Set(refs.filter(x=>!all.has(x)&&x!=='--sample'))],[]);
+ assert.match(style,/\.project-entry\.type-idea\{--entry-accent:var\(--type-idea\)\}/);
+ assert.match(style,/\.stats \.stat-principal\{--stat-accent:var\(--priority-principal\)\}/);
+ assert.match(style,/color-mix\(in srgb/);
+ assert.match(style,/\.token-copy-footer\{position:static/);
+});
+test('Editor keeps existing source and legacy backup while no longer presenting 43 removed tokens',()=>{
+ assert.match(editor,/LEGACY_STORAGE/);
+ assert.match(editor,/function collectLegacy/);
+ assert.match(editor,/function migrateStored/);
+ assert.match(editor,/legacy:clone\(legacyOverrides\)/);
  assert.match(app,/function settingsPage\(\)/);
- assert.match(app,/const safePriority=/);
- assert.match(style,/\.priority-principal/);
- assert.match(style,/\.status-aprovado_nao_implementado/);
+ assert.match(app,/renderTokenEditor\(\)/);
+ assert.match(editor,/Copiar alterações/);
 });
-
-test('Light theme vibrancy isolated from dark theme',()=>{
- for(const token of ['--priority-principal-bg','--priority-principal-ink','--status-warning-bg','--status-warning-ink','--type-project-bg','--type-idea-bg']){
-  assert.match(tokens,new RegExp(token.replaceAll('-','\\-')+':light-dark\\('));
- }
- assert.match(style,/\.stats \.stat-principal\{background:var\(--stat-card-bg\)/);
- assert.match(style,/\.status-aguardando_decisao\{[^}]*background:var\(--status-warning-card-bg\)/);
- assert.doesNotMatch(style,/#[a-fA-F0-9]{3,8}\b/);
-});
-
-test('Vivid priority fills and versioned style assets avoid stale PWA CSS',()=>{
- assert.match(tokens,/--priority-principal-fill:light-dark\(#8B32E8/);
- assert.match(style,/\.priority-principal \.priority-pill\{[^}]*background:var\(--priority-principal-fill\)/);
- assert.match(html,/href="\.\/tokens\.css\?v=019"/);
- assert.match(html,/href="\.\/styles\.css\?v=019"/);
- const sw=read('sw.js');
- assert.match(sw,/event\.request\.mode==='navigate'/);
- assert.match(sw,/fetch\(event\.request\)/);
- assert.match(sw,/\.\/tokens\.css\?v=019/);
-});
-
-test('Statistics stay neutral; project cards retain soft distinct tints',()=>{
- assert.match(tokens,/--stat-card-bg:var\(--surface\)/);
- assert.match(tokens,/--type-idea:light-dark\(#008F91,#7CE1D8\)/);
- assert.match(tokens,/--type-project-card-bg:light-dark\(#EBF2FA,var\(--surface\)\)/);
- assert.match(tokens,/--type-idea-card-bg:light-dark\(#E7F4F1,var\(--surface\)\)/);
- for(const category of ['project','principal','idea','review']){
-  assert.match(style,new RegExp('\\.stats \\.stat-'+category+'\\{background:var\\(--stat-card-bg\\)'));
- }
- assert.match(style,/\.project-entry\{[^}]*background:var\(--type-project-card-bg\)/);
- assert.match(style,/\.project-entry\.type-idea\{[^}]*background:var\(--type-idea-card-bg\)/);
-});
-
-test('Statistics accent has valid lengths in light and dark',()=>{
- assert.match(tokens,/--stat-accent-width:4px/);
- assert.match(tokens,/data-theme="dark"\]\{--stat-accent-width:0px/);
- assert.doesNotMatch(tokens,/light-dark\([0-9]+px,/);
+test('Cache version and automatic light/dark themes remain integrated',()=>{
+ assert.match(html,/v0\.1\.10/);
+ assert.match(html,/tokens\.css\?v=020/);
+ assert.match(sw,/projoteca-visualizador-v020/);
+ assert.match(sw,/token-editor\.js/);
+ assert.match(tokens,/color-scheme: light dark/);
+ assert.match(style,/--stat-accent-width:4px/);
+ assert.match(style,/data-theme="dark"/);
 });

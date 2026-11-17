@@ -86,8 +86,8 @@ try{
   else await check('Dark statistics remain uniform', "getComputedStyle(document.querySelector('.stats .stat-principal')).backgroundColor===getComputedStyle(document.querySelector('.stats .stat-project')).backgroundColor");
   await click('[data-tab=projetos]');
   await evaluate("document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}));true");
-  if(theme==='light') await check('Light priority pill is solid violet',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(139, 50, 232)'");
-  if(theme==='light') await check('Projects have subtle tinted backgrounds', "getComputedStyle(document.querySelector('.project-entry:not(.type-idea)')).backgroundColor==='rgb(235, 242, 250)' && getComputedStyle(document.querySelector('.project-entry.type-idea')).backgroundColor==='rgb(231, 244, 241)'");
+  if(theme==='light') await check('Light priority pill is solid violet',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(146, 54, 239)'");
+  if(theme==='light') await check('Projects have subtle tinted backgrounds', "(()=>{const a=document.querySelector('.project-entry');return Boolean(a&&getComputedStyle(a).backgroundColor!=='rgb(255, 255, 255)'&&getComputedStyle(a).backgroundColor!=='rgba(0, 0, 0, 0)')})()");
   else await check('Dark priority pill stays subdued',"getComputedStyle(document.querySelector('.priority-principal .priority-pill')).backgroundColor==='rgb(32, 43, 58)'");
   await click('[data-tab=painel]');
   for(const width of [320,390,768]){

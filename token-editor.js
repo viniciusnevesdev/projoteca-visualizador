@@ -1,20 +1,103 @@
 /* Projoteca — editor local de tokens. Nenhum dado do catálogo é lido ou transmitido. */
 export const TOKEN_STORAGE='projoteca.token-overrides.v1';
+export const LEGACY_STORAGE='projoteca.token-overrides.backup-v019';
 export const TOKEN_SCHEMA='projoteca-token-changes-v1';
-const VERSION='0.1.9';
+const VERSION='0.1.10';
 const SECTIONS=[
- {id:'structure',name:'Estrutura',keys:['--bg','--surface','--surface2','--surface3','--ink','--muted','--line','--brand','--on-brand','--nav-bg','--brand-highlight','--stat-card-bg','--type-project-card-bg','--type-idea-card-bg','--shadow-subtle','--shadow-toast','--dialog-backdrop']},
- {id:'priority',name:'Importância',keys:['--priority-principal','--priority-alta','--priority-normal','--priority-principal-ink','--priority-alta-ink','--priority-principal-bg','--priority-alta-bg','--priority-principal-chip-bg','--priority-principal-fill','--priority-principal-on-fill','--priority-alta-fill','--priority-alta-on-fill']},
- {id:'types',name:'Tipos',keys:['--type-project','--type-idea','--type-decision','--type-file','--type-pending','--type-rule','--type-project-bg','--type-project-ink','--type-idea-bg','--type-idea-ink','--type-file-bg','--type-file-ink','--type-idea-chip-bg','--type-project-on-fill','--type-idea-on-fill','--type-file-on-fill']},
- {id:'status',name:'Estados',keys:['--status-danger','--status-success','--status-warning','--status-info','--status-pending','--status-danger-ink','--status-success-ink','--status-warning-ink','--status-info-ink','--status-success-bg','--status-warning-bg','--status-warning-chip-bg','--status-info-bg','--status-warning-card-bg','--status-info-card-bg']},
- {id:'actions',name:'MMU / Ações',keys:['--color-danger','--on-danger','--color-success','--on-success','--color-warning','--on-warning','--color-info','--on-info','--action-add','--on-action-add','--color-primary','--on-primary']}
+ {
+  "id": "structure",
+  "name": "Estrutura",
+  "keys": [
+   "--bg",
+   "--surface",
+   "--surface2",
+   "--surface3",
+   "--ink",
+   "--muted",
+   "--line",
+   "--brand",
+   "--on-brand",
+   "--nav-bg",
+   "--shadow-subtle",
+   "--shadow-toast",
+   "--dialog-backdrop"
+  ]
+ },
+ {
+  "id": "priority",
+  "name": "Importância",
+  "keys": [
+   "--priority-principal",
+   "--priority-alta"
+  ]
+ },
+ {
+  "id": "types",
+  "name": "Tipos",
+  "keys": [
+   "--type-project",
+   "--type-idea",
+   "--type-decision",
+   "--type-file",
+   "--type-pending",
+   "--type-rule"
+  ]
+ },
+ {
+  "id": "status",
+  "name": "Textos de estado",
+  "keys": [
+   "--status-danger-ink",
+   "--status-success-ink",
+   "--status-warning-ink",
+   "--status-info-ink"
+  ]
+ },
+ {
+  "id": "actions",
+  "name": "Semânticas MMU",
+  "keys": [
+   "--color-danger",
+   "--color-success",
+   "--color-warning",
+   "--color-info",
+   "--action-add",
+   "--on-action-add"
+  ]
+ }
 ];
 const LABELS={
- '--bg':'Fundo geral','--surface':'Cartões neutros','--surface2':'Superfície secundária','--surface3':'Superfície destacada','--ink':'Texto principal','--muted':'Texto secundário','--line':'Bordas neutras','--brand':'Cor principal do app','--on-brand':'Texto da cor principal','--nav-bg':'Barra inferior','--brand-highlight':'Seleção de navegação','--stat-card-bg':'Fundo das estatísticas','--type-project-card-bg':'Fundo dos projetos','--type-idea-card-bg':'Fundo das ideias','--shadow-subtle':'Sombra suave','--shadow-toast':'Sombra de avisos','--dialog-backdrop':'Fundo atrás das janelas',
- '--priority-principal':'Principal — destaque','--priority-alta':'Alta — destaque','--priority-normal':'Normal','--priority-principal-ink':'Texto principal','--priority-alta-ink':'Texto alta','--priority-principal-bg':'Fundo principal suave','--priority-alta-bg':'Fundo alta suave','--priority-principal-fill':'Etiqueta principal preenchida','--priority-principal-on-fill':'Texto da etiqueta principal','--priority-alta-fill':'Etiqueta alta preenchida','--priority-alta-on-fill':'Texto da etiqueta alta',
- '--type-project':'Projetos','--type-idea':'Ideias','--type-decision':'Decisões','--type-file':'Arquivos','--type-pending':'Pendências','--type-rule':'Regras',
- '--status-danger':'Perigo','--status-success':'Concluído','--status-warning':'Atenção','--status-info':'Informação','--status-pending':'Pendente',
- '--color-danger':'Vermelho oficial MMU','--color-success':'Verde oficial MMU','--color-warning':'Amarelo oficial MMU','--color-info':'Azul oficial MMU','--action-add':'Adicionar (MMU)','--color-primary':'Cor principal'
+ "--bg": "Fundo geral",
+ "--surface": "Cartões neutros",
+ "--surface2": "Superfície secundária",
+ "--surface3": "Superfície destacada",
+ "--ink": "Texto principal",
+ "--muted": "Texto secundário",
+ "--line": "Bordas neutras",
+ "--brand": "Cor principal do app",
+ "--on-brand": "Texto sobre cor principal",
+ "--nav-bg": "Barra inferior",
+ "--shadow-subtle": "Sombra suave",
+ "--shadow-toast": "Sombra de avisos",
+ "--dialog-backdrop": "Fundo atrás das janelas",
+ "--priority-principal": "Principal",
+ "--priority-alta": "Alta",
+ "--type-project": "Projetos",
+ "--type-idea": "Ideias",
+ "--type-decision": "Decisões",
+ "--type-file": "Arquivos",
+ "--type-pending": "Pendências",
+ "--type-rule": "Regras",
+ "--status-danger-ink": "Texto de perigo",
+ "--status-success-ink": "Texto concluído",
+ "--status-warning-ink": "Texto de atenção",
+ "--status-info-ink": "Texto informativo",
+ "--color-danger": "Vermelho oficial",
+ "--color-success": "Verde oficial",
+ "--color-warning": "Amarelo oficial",
+ "--color-info": "Azul oficial",
+ "--action-add": "Adicionar",
+ "--on-action-add": "Texto em adicionar"
 };
 const ALL=new Set(SECTIONS.flatMap(x=>x.keys));
 let base=new Map();
@@ -22,6 +105,7 @@ let overrides={light:{},dark:{}};
 let history=[],future=[],activeGesture=null;
 let section='structure',selected='--bg',previewTheme='light',opened=false;
 let lastError=null;
+let legacyOverrides={light:{},dark:{}};
 const root=()=>document.documentElement;
 const clone=x=>structuredClone(x);
 export function normalizeHex(value){
@@ -88,8 +172,50 @@ export function validateImport(text){
  if(data.format&&data.format!==TOKEN_SCHEMA)throw Error('Formato incompatível.');
  return knownData(data);
 }
+function collectLegacy(data){
+ const src=data.themes||data, out={light:{},dark:{}};
+ const former=data.legacy||{};
+ for(const theme of ['light','dark']){
+  const entries={...(src[theme]||{}),...(former[theme]||{})};
+  for(const [key,v] of Object.entries(entries)){
+   if(ALL.has(key)||!/^--[a-z0-9-]{2,80}$/.test(key))continue;
+   const hex=normalizeHex(v);if(hex)out[theme][key]=hex;
+  }
+ }
+ return out;
+}
+function migrateStored(s){
+ const parsed=JSON.parse(s);
+ const migrated=knownData(parsed);
+ const old=collectLegacy(parsed);
+ // Migrate only hue-equivalent values, retaining the full original report.
+ const aliases=[
+  ['--priority-principal-ink','--priority-principal'],
+  ['--priority-alta-ink','--priority-alta'],
+  ['--priority-principal-on-fill','--priority-principal'],
+  ['--priority-alta-on-fill','--priority-alta']
+ ];
+ for(const theme of ['light','dark']){
+  for(const [alias,target] of aliases){
+   if(old[theme][alias] && !migrated[theme][target]){
+    if(alias.endsWith('on-fill')&&theme==='light')continue;
+    migrated[theme][target]=old[theme][alias];
+   }
+  }
+ }
+ return {migrated,old};
+}
 function load(){
- try{const s=localStorage.getItem(TOKEN_STORAGE);if(s)overrides=validateImport(s)}catch(e){lastError=e}
+ try{
+  const s=localStorage.getItem(TOKEN_STORAGE);
+  if(!s)return;
+  const {migrated,old}=migrateStored(s);
+  overrides=migrated;legacyOverrides=old;
+  if(Object.keys(old.light).length||Object.keys(old.dark).length){
+   if(!localStorage.getItem(LEGACY_STORAGE))localStorage.setItem(LEGACY_STORAGE,s);
+   persist();
+  }
+ }catch(e){lastError=e}
 }
 function remember(){
  history.push(clone(overrides));if(history.length>40)history.shift();
@@ -113,7 +239,7 @@ function apply(){
  style.textContent=buildRule();
 }
 function persist(toast){
- try{localStorage.setItem(TOKEN_STORAGE,JSON.stringify({format:TOKEN_SCHEMA,themes:overrides}))}
+ try{localStorage.setItem(TOKEN_STORAGE,JSON.stringify({format:TOKEN_SCHEMA,themes:overrides,legacy:legacyOverrides}))}
  catch(e){lastError=e;toast?.('Armazenamento indisponível; copie suas alterações para não perdê-las.')}
 }
 export function initTokenEditor(){
@@ -168,7 +294,8 @@ function colorControl(key){
 export function renderTokenEditor(){
  const cat=SECTIONS.find(x=>x.id===section)||SECTIONS[0], changedCount=count();
  return `<div class="token-editor">
-  <div class="row"><div><h1>Editor de Tokens</h1><p class="small">Personalização local · não altera o código oficial.</p></div><button type="button" class="ghost mini" data-action="token-back">Voltar</button></div>
+  <div class="row"><div><h1>Editor de Tokens</h1><p class="small">31 cores-base compartilhadas · os usos derivados são automáticos.</p></div><button type="button" class="ghost mini" data-action="token-back">Voltar</button></div>
+  <p class="tip" id="token-legacy-notice" ${(Object.keys(legacyOverrides.light).length+Object.keys(legacyOverrides.dark).length)?'':'hidden'}>Cores antigas de funções específicas foram preservadas no relatório e no backup local. Para novas alterações, use as cores-base compartilhadas.</p>
   <div class="token-toolbar">
     <span class="small">Tema de prévia</span>
     <div class="theme-options" role="group" aria-label="Editar cores do tema">
@@ -281,9 +408,9 @@ export function tokenFileChange(event,toast,render){
  const file=event.target.files?.[0];event.target.value='';
  if(!file)return true;
  file.text().then(text=>{
-  const parsed=validateImport(text);
+  const parsed=validateImport(text),legacy=collectLegacy(JSON.parse(text));
   if(!confirm('Substituir as cores locais pelos valores desse JSON?'))return;
-  remember();overrides=parsed;apply();persist(toast);render();toast('Cores importadas neste dispositivo.');
+  remember();overrides=parsed;legacyOverrides=legacy;apply();persist(toast);render();toast('Cores importadas neste dispositivo.');
  }).catch(e=>toast('Importação inválida: '+e.message));
  return true;
 }
@@ -296,12 +423,14 @@ export function buildCopyText(){
  for(const theme of ['light','dark'])for(const [key,val] of Object.entries(overrides[theme]).sort(([a],[b])=>a.localeCompare(b))){
   entries.push(theme.toUpperCase()+'  '+key+' = '+val);
  }
- const json={format:TOKEN_SCHEMA,version:1,app:'Projoteca Visualizador',appVersion:VERSION,themes:clone(overrides)};
+ const json={format:TOKEN_SCHEMA,version:2,app:'Projoteca Visualizador',appVersion:VERSION,themes:clone(overrides),legacy:clone(legacyOverrides)};
  return 'PROJOTECA — ALTERAÇÕES DE CORES PARA APLICAR NO CÓDIGO\n'
  +'Esta é uma proposta de personalização local; ainda não altera os tokens padrão do repositório.\n'
  +n+' cor(es) personalizada(s).\n\n'
  +(entries.length?entries.join('\n'):'Nenhuma cor alterada.')+'\n\nJSON:\n'
- +JSON.stringify(json,null,2);
+ +JSON.stringify(json,null,2)
+ +((Object.keys(legacyOverrides.light).length+Object.keys(legacyOverrides.dark).length)
+ ? '\n\nAVISO: tokens antigos preservados no JSON (campo legacy). Alguns fundos/contrastes não têm equivalente exato entre as cores-base.' : '');
 }
 async function copyText(toast){
  const text=buildCopyText();
@@ -333,7 +462,7 @@ export function tokenClick(action,id,theme,toast,render){
  case 'token-redo':if(future.length){history.push(clone(overrides));overrides=future.pop();activeGesture=null;apply();persist(toast);render()}break;
  case 'token-copy':copyText(toast);break;
  case 'token-export':{
-  const blob=new Blob([JSON.stringify({format:TOKEN_SCHEMA,version:1,themes:overrides},null,2)],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({format:TOKEN_SCHEMA,version:2,themes:overrides,legacy:legacyOverrides},null,2)],{type:'application/json'});
   const href=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=href;a.download='Projoteca_Tokens_Personalizados.json';document.body.append(a);a.click();a.remove();
   setTimeout(()=>URL.revokeObjectURL(href),30000);break;

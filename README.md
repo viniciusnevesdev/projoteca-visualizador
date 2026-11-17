@@ -121,3 +121,13 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Cores canônicas MMU são valores padrão do repositório; o editor permite sobreposições locais sem modificar os arquivos do modelo.
 - Service worker atualizado para suportar funcionamento offline, com CSS e script principal versionados contra cache antigo.
 - Correção retroativa: stat-accent-width usava light-dark(4px,0px), inválido para comprimento; agora valores separados com media query e tema forçado.
+
+## v0.1.10 — Compactação física dos tokens de cores
+
+- Alteração solicitada: simplificar o código-fonte, não apenas a lista visual do editor.
+- tokens.css: 74 declarações reduzidas a 31 cores-base independentes. Removidas 43 variantes redundantes de fundo, contraste e etiquetas.
+- styles.css: cores derivadas com color-mix() a partir de uma cor-base por papel; estatísticas e cartões compartilham regras em vez de repetir estilos. Dimensões das bordas permanecem em styles.css (não fazem parte dos tokens cromáticos).
+- Tokens de prioridade no arquivo: apenas priority-principal e priority-alta. Cores semânticas canônicas MMU permanecem intactas.
+- O editor exibe os 31 tokens reais. Backup das personalizações anteriores preservado em localStorage (projoteca.token-overrides.backup-v019), com cópia dos tokens descontinuados no campo legacy do JSON e no relatório Copiar. Apenas equivalentes seguros migram automaticamente; outros ajustes podem exigir nova escolha.
+- Corrigida a sobreposição do bloco Copiar alterações (não fica mais fixo).
+- Testes estáticos e navegador Firefox; não inclui alteração do ZIP privado nem da matriz documental.
