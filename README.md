@@ -208,3 +208,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Padding, gap e margens responsivas de componentes equivalentes consomem tokens compartilhados em spacing.css; titulo/corpo/editor preservam suas funcoes diferentes.
 - Cinco margens inline em app.js substituidas por duas classes de papel. Cores cromaticas, arquivos ZIP, Matriz, dados e preferencias locais preservados.
 - Testes novos contra duplicacoes e Firefox nos dois temas, nas quatro abas e no editor.
+
+
+## v0.1.20 — Estatisticas compactas no Painel
+
+- Quatro cartoes em grade 2x2: numero e legenda passam a ocupar uma linha, mantendo fonte dos numeros 30px e texto 14px.
+- Padding responsivo derivado de --espaco-dentro-estatistica, uma unica medida de 8px. Intervalos entre os quatro cartoes usam --espaco-pequeno.
+- Removida a regra duplicada de padding mobile. Cores, dados, projeto e tokens gerais permanecem inalterados.
+- Testes verificam os quatro cartoes, largura, altura, alinhamento e visualizacao em Firefox.

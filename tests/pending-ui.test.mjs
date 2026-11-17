@@ -20,5 +20,5 @@ test('Aprovar e reprovar usam as cores oficiais para regras e tarefas',()=>{
  assert.match(app,/action\.startsWith\('reject-'\)\?'acao-reprovar'/);
  assert.match(css,/\.acao-aprovar\{[^}]*var\(--color-success\)/);
  assert.match(css,/\.acao-reprovar\{[^}]*var\(--color-danger\)/);
- assert.match(sw,/projoteca-visualizador-v029/);
+ assert.match(sw,/projoteca-visualizador-v030/);
 });

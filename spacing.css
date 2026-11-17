@@ -15,6 +15,7 @@
   --margem-pagina: var(--espaco-amplo);
   --espaco-blocos-gerais: var(--espaco-grande);
   --espaco-dentro-cartao-padrao: var(--espaco-grande);
+  --espaco-dentro-estatistica: var(--espaco-pequeno);
   --espaco-controles: var(--espaco-pequeno);
   --espaco-icone-texto: var(--espaco-pequeno);
   --espaco-separacao-conteudo: var(--espaco-medio);

@@ -26,7 +26,7 @@ test('Padding e gap por papel; margens de JS nao sao avulsas',()=>{
 test('Sombra comum por funcao; 4 tamanhos de icone e PWA versionado',()=>{
  for(const k of ['controle','modal','amostra','aviso'])assert.ok(ui.includes('--sombra-'+k+':'));
  for(const k of ['mini','pequeno','medio','padrao'])assert.ok(ui.includes('--icone-'+k+':'));
- assert.match(html,/ui-tokens\.css\?v=029/);
- assert.match(sw,/ui-tokens\.css\?v=029/);
- assert.match(sw,/projoteca-visualizador-v029/);
+ assert.match(html,/ui-tokens\.css\?v=030/);
+ assert.match(sw,/ui-tokens\.css\?v=030/);
+ assert.match(sw,/projoteca-visualizador-v030/);
 });

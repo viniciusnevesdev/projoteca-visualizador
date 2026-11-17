@@ -21,7 +21,7 @@ test('Alturas pintadas e area de toque separadas',()=>{
  assert.doesNotMatch(css,/min-height:44px/);
 });
 test('Cache e HTML atualizados sem modificar tokens cromaticos',()=>{
- assert.match(html,/v0\.1\.19/);
- assert.match(sw,/projoteca-visualizador-v029/);
- assert.match(html,/spacing\.css\?v=029/);
+ assert.match(html,/v0\.1\.20/);
+ assert.match(sw,/projoteca-visualizador-v030/);
+ assert.match(html,/spacing\.css\?v=030/);
 });

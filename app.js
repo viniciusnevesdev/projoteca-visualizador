@@ -1,5 +1,5 @@
 import{icon}from'./icons.js';
-import{initTokenEditor,renderTokenEditor,leaveTokenEditor,tokenClick,tokenInput,tokenChange,tokenFileChange,getEditorState}from'./token-editor.js?v=029';
+import{initTokenEditor,renderTokenEditor,leaveTokenEditor,tokenClick,tokenInput,tokenChange,tokenFileChange,getEditorState}from'./token-editor.js?v=030';
 import{readZip,writeZip,zipText}from'./zip.js';
 import{readCatalog,exportCatalog,addIdea,phaseNames,phaseValues,activityNames,activityValues,decisionNames,today}from'./catalog.js';
 const $=(s,root=document)=>root.querySelector(s);

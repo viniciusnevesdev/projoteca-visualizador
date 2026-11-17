@@ -89,6 +89,8 @@ try{
  await click('[data-tab=painel]');await click('[data-action=export]');
  await wait('window.testExportBlob');
  await check('Versioned export reimports with note and decision',`await (async()=>{const {readZip}=await import('./zip.js');const {readCatalog}=await import('./catalog.js');const c=readCatalog(await readZip(window.testExportBlob));return c.manifest.versao==='0.0.2' && c.byId.get('raiz').observacoes.some(s=>s.includes('Anotação sintética')) && c.registry.itens.find(x=>x.id==='g1').status==='aprovado_nao_implementado'})()`);
+ await click('[data-tab=painel]');
+ await check('Compact four statistical cards',"(()=>{const g=document.querySelector('.stats'),cards=[...document.querySelectorAll('.stats > .card')];return !!g&&cards.length===4&&cards.every(c=>{const a=c.querySelector('strong'),b=c.querySelector('span'),r=c.getBoundingClientRect(),x=a?.getBoundingClientRect(),y=b?.getBoundingClientRect();return !!x&&!!y&&r.height<=65&&x.right<y.left&&Math.abs((x.top+x.bottom)/2-(y.top+y.bottom)/2)<5&&y.right<=r.right+1})&&g.getBoundingClientRect().height<=140})()");
  for(const tab of ['painel','projetos','pendencias','arquivos']){
   await click('[data-tab='+tab+']');
   await check('Shared page spacing '+tab,"(()=>{const main=document.querySelector('#main'),env=document.querySelector('.environment'),page=main?.querySelector('.page'),heading=main?.querySelector('.page-title'),kicker=heading?.querySelector('.kicker');if(!main?.classList.contains('pagina-catalogo')||!env?.classList.contains('antes-pagina')||!page||!heading)return false;const gap=parseFloat(getComputedStyle(page).rowGap),above=parseFloat(getComputedStyle(env).marginBottom),mb=parseFloat(getComputedStyle(heading).marginBottom);return Math.abs(gap-8)<1&&Math.abs(above-8)<1&&mb<1&&(!kicker||Math.abs(parseFloat(getComputedStyle(kicker).marginTop)-2)<1)})()");
@@ -133,7 +135,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=029')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=029')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=030')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=030')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');
