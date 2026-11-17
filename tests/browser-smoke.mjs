@@ -75,15 +75,22 @@ try{
  await wait('window.testExportBlob');
  await check('Versioned export reimports with note and decision',`await (async()=>{const {readZip}=await import('./zip.js');const {readCatalog}=await import('./catalog.js');const c=readCatalog(await readZip(window.testExportBlob));return c.manifest.versao==='0.0.2' && c.byId.get('raiz').observacoes.some(s=>s.includes('Anotação sintética')) && c.registry.itens.find(x=>x.id==='g1').status==='aprovado_nao_implementado'})()`);
  for(const theme of ['light','dark']){
-  // Activate the actual light/dark stylesheet rules; no OS theme change.
-  await evaluate(`(()=>{const rules=[...document.styleSheets].flatMap(s=>[...s.cssRules]);window.testThemeRule??=rules.find(r=>r.media?.mediaText.includes('prefers-color-scheme'));window.testThemeRule.media.mediaText='${theme==='light'?'all':'not all'}';return true})()`);
-  await check('Theme '+theme,`getComputedStyle(document.documentElement).colorScheme==='${theme}'`);
+  await click('#btn-settings');
+  await check('Settings independent of catalog',"document.querySelector('#main h1').textContent==='Ajustes' && getComputedStyle(document.querySelector('.bottom')).display==='none'");
+  await click('button[data-action=theme][data-id='+theme+']');
+  await check('Theme '+theme,`document.documentElement.dataset.theme==='${theme}' && getComputedStyle(document.documentElement).colorScheme==='${theme}' && localStorage.getItem('projoteca.theme.v1')==='${theme}'`);
+  await check('Theme button selected',`document.querySelector('[data-action=theme][data-id=${theme}]').getAttribute('aria-pressed')==='true'`);
+  await click('[data-action=settings-close]');
   for(const width of [320,390,768]){
    await viewport(width);
    for(const tab of ['painel','projetos','pendencias','arquivos']){await click(`[data-tab=${tab}]`);await check('Active navigation '+tab,`document.querySelector('.bottom [aria-current=page]').dataset.tab==='${tab}'`);await check(`${theme} ${width}px ${tab} no horizontal overflow`,"document.documentElement.scrollWidth<=innerWidth")}
    await click('[data-env=programacao]');await check(`${theme} ${width}px programming no overflow`,"document.documentElement.scrollWidth<=innerWidth");await click('[data-env=catalogo]');
   }
  }
+ await click('#btn-settings');
+ await click('[data-action=theme][data-id=auto]');
+ await check('Automatic follows system without override', "document.documentElement.dataset.theme===undefined && localStorage.getItem('projoteca.theme.v1')===null && getComputedStyle(document.documentElement).colorScheme==='light dark'");
+ await click('[data-action=settings-close]');
  await viewport(390);await click('[data-tab=painel]');
  await check('Dashboard navigation selected',"document.querySelector('.bottom .selected').dataset.tab==='painel'");
  await wait("!document.querySelector('#toast').classList.contains('show')");

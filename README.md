@@ -72,3 +72,15 @@ Seletores de ambientes e fontes, botoes de acao, icones, filtros, navegacao e ca
 - Tokens semanticos oficiais do MMU (danger, success, warning, info e action-add) adicionados; botoes de criar/adicionar usam action-add.
 - Icones proprios da v0.1.3 preservados; 16 SVGs MMU candidatos **nao publicados** porque o MMU registra licenca_verificada: false para simbolos relacionados a SF Symbols. Candidato completo arquivado separadamente no MacBook.
 - Nenhuma mudanca na logica de importacao/exportacao nem no catalogo privado. Migracao integral de icones ainda pendente.
+
+
+## v0.1.5 — Ajustes e cores centralizadas
+- Tema Automatico/Claro/Escuro na tela Ajustes (botao de cabecalho), salvo no navegador, nunca no ZIP privado. Tema automatico segue iPhone.
+- tokens.css e a unica origem dos codigos de cores; light-dark() adapta light/dark sem duplicar paletas.
+- Tres camadas: semantica MMU (status/acessoes), importancia Projoteca (principal/alta/normal) e tipos (projeto/ideia/decisao/pendencia/regra/arquivo).
+- Importancia independe de andamento: aprovado, mas nao implementado, sinaliza atencao — nao conclusao.
+- Icones originais mantidos; SVGs MMU com licenca pendente nao incluidos. Importacao/exportacao do catalogo nao alteradas.
+
+### Testes de interface
+
+Teste opcional de navegador cobre Ajustes, temas forçados/automático e navegação em 320/390/768px. Testes automáticos verificam tokens CSS. Tonalidades específicas são padrões iniciais, sujeitos a avaliação visual do usuário.

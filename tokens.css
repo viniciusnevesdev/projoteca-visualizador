@@ -1,0 +1,44 @@
+/* Fonte unica de cores. MMU 0.0.13 + identidade Projoteca.
+   light-dark() acompanha sistema; data-theme permite forcar claro/escuro. */
+:root {
+ color-scheme:light dark;
+ /* Superficies, texto e estrutura */
+ --bg:light-dark(#f3f5f9,#10151e);
+ --surface:light-dark(#ffffff,#19212e);
+ --surface2:light-dark(#edf1f7,#202b3a);
+ --surface3:light-dark(#e1e9f5,#2c3a4e);
+ --ink:light-dark(#1c2a3d,#f1f5fb);
+ --muted:light-dark(#526176,#b3c0d2);
+ --line:light-dark(#d5dce7,#354359);
+ --brand:light-dark(#315e9a,#b6cdf2);
+ --on-brand:light-dark(#ffffff,#172a44);
+ --nav-bg:light-dark(#fffffff5,#19212ef5);
+ --shadow-subtle:light-dark(#00000012,#00000033);
+ --shadow-toast:light-dark(#00000024,#00000044);
+ --dialog-backdrop:light-dark(#121b37a0,#02040abf);
+ /* 1. Semantica MMU: estados/acoes, nunca prioridade */
+ --color-danger:#E22400; --on-danger:#ffffff;
+ --color-success:#34C759; --on-success:#000000;
+ --color-warning:#FFB501; --on-warning:#000000;
+ --color-info:#0189FB; --on-info:#000000;
+ --action-add:#30BCFF; --on-action-add:#000000;
+ --color-primary:var(--brand); --on-primary:var(--on-brand);
+ --status-danger:light-dark(#af280d,#ff8f76);
+ --status-success:light-dark(#1e7546,#8de5b3);
+ --status-warning:light-dark(#885600,#ffd07f);
+ --status-info:light-dark(#145da2,#85c9ff);
+ --status-pending:var(--status-warning);
+ /* 2. Importancia Projoteca: independente da fase */
+ --priority-principal:light-dark(#7438ac,#d9a4ff);
+ --priority-alta:light-dark(#84639e,#c3afe0);
+ --priority-normal:var(--muted);
+ /* 3. Tipo de conteudo Projoteca */
+ --type-project:light-dark(#1c689b,#88caff);
+ --type-idea:light-dark(#7950a7,#d0b5ff);
+ --type-decision:light-dark(#9c572a,#f0be95);
+ --type-file:light-dark(#216f78,#8dd5d9);
+ --type-pending:light-dark(#93602b,#dfba89);
+ --type-rule:light-dark(#5b7390,#aabedb);
+}
+:root[data-theme="light"] {color-scheme:light}
+:root[data-theme="dark"] {color-scheme:dark}
