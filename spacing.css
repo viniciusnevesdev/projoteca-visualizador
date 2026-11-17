@@ -17,8 +17,14 @@
   --espaco-entre-cartoes: var(--espaco-pequeno);
   --espaco-etiqueta-vertical: var(--espaco-micro);
   --espaco-etiqueta-horizontal: var(--espaco-pequeno);
-  --espaco-botao-vertical: var(--espaco-pequeno);
+  --espaco-botao-vertical: var(--espaco-micro);
   --espaco-botao-horizontal: var(--espaco-medio);
+  /* Altura visivel independente da area clicavel minima.
+     Em botoes compactos, ::after amplia somente a area de toque. */
+  --altura-filtro: 36px;
+  --altura-acao: 38px;
+  --altura-ambiente: 38px;
+  --area-toque-minima: 44px;
   --espaco-campo-com-icone: 46px;
   --reserva-barra-inferior: 72px;
 }

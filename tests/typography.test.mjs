@@ -13,16 +13,16 @@ test('CSS usa apenas os sete tokens e preserva campo com 16px',()=>{
  assert.match(css,/font:var\(--fonte-corpo\)\/1\.5/);
  assert.match(css,/input,textarea,select\{[^}]*font-size:var\(--fonte-campo\)/);
  assert.match(css,/\.token-hex-label input\{[^}]*font-size:var\(--fonte-campo\)/);
- assert.match(css,/\.bottom button\{[^}]*min-height:44px[^}]*font-size:var\(--fonte-navegacao\)/);
- assert.match(css,/\.env\{[^}]*min-height:38px/);
+ assert.match(css,/\.bottom button\{[^}]*min-height:var\(--area-toque-minima\)[^}]*font-size:var\(--fonte-navegacao\)/);
+ assert.match(css,/\.env\{[^}]*min-height:var\(--altura-ambiente\)/);
  assert.match(css,/h2\{[^}]*font-size:var\(--fonte-secao\)/);
  assert.match(css,/h1\{[^}]*font-size:var\(--fonte-titulo\)/);
  assert.match(css,/\.stats strong\{[^}]*font-size:var\(--fonte-destaque\)/);
  assert.match(css,/\.token-preview \.stats strong\{[^}]*font-size:var\(--fonte-titulo\)/);
 });
 test('novos CSS e caches versionados offline',()=>{
- assert.match(html,/typography\.css\?v=025/);
- assert.match(html,/v0\.1\.15/);
- assert.match(sw,/typography\.css\?v=025/);
- assert.match(sw,/projoteca-visualizador-v025/);
+ assert.match(html,/typography\.css\?v=026/);
+ assert.match(html,/v0\.1\.16/);
+ assert.match(sw,/typography\.css\?v=026/);
+ assert.match(sw,/projoteca-visualizador-v026/);
 });

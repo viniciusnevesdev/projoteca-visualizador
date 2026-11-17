@@ -172,3 +172,12 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Removido botao Abrir e convertida a antiga button.linkrow em h2, sem a altura minima artificial de 44px. Titulo e situacao se aproximam das bordas com padding uniforme de --espaco-dentro-cartao.
 - Botoes de projetos filhos permanecem independentes, acima da area clicavel principal.
 - Preservados demais tokens, funcionalidades, descricao completa em Detalhes e catalogo original.
+
+
+## v0.1.16 — Altura visual e área de toque separadas
+
+- Tokens em spacing.css: altura visível de filtros 36px; ações usuais, Aprovar e Reprovar 38px; ambientes superiores 38px; área mínima de toque 44px.
+- CSS dos filtros com padding vertical zero, das ações com padding vertical 4px, evitando que textos curtos criem botões maiores que a altura-alvo.
+- Área clicável dos botões compactos expandida verticalmente até pelo menos 44px por pseudo-elemento transparente (sem esticar o preenchimento visual). Sem expansão horizontal que sobreponha controles vizinhos.
+- Navegação inferior e botões só de ícone permanecem 44px. Campos de digitação mantêm seu tamanho próprio e fonte mínima 16px.
+- Demais elementos de função especializada (linhas de editor, ferramentas de várias linhas) preservam dimensões próprias. Nenhuma cor ou arquivo de conteúdo modificado.

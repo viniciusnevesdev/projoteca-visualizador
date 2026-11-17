@@ -21,6 +21,7 @@ try{
  await wait("document.querySelector('#main h1')");
  await check('Empty catalog has import and no simulated projects',"document.querySelector('#main').innerText.includes('Projoteca ainda não carregada') && !document.querySelector('.project-card') && document.querySelector('#main [data-action=import]')");
  await check('Typography uses real 14, 18, 24 and 11px roles',"getComputedStyle(document.documentElement).fontSize==='14px' && getComputedStyle(document.querySelector('h2')).fontSize==='18px' && getComputedStyle(document.querySelector('h1')).fontSize==='24px' && getComputedStyle(document.querySelector('.bottom button')).fontSize==='11px'");
+ await check('Bottom navigation 44px and shared token',"(()=>{const b=document.querySelector('.bottom button');return b && b.getBoundingClientRect().height>=44 && getComputedStyle(document.documentElement).getPropertyValue('--area-toque-minima').trim()==='44px'})()");
  await check('Four SVG navigation buttons',"document.querySelectorAll('.bottom button svg').length===4 && !/[▦▤☷▱↥]/.test(document.body.innerText)");
  await click('[data-env=programacao]');
  await check('Programming disabled and one source sufficient',"document.querySelectorAll('.tools button:disabled').length===6 && document.querySelector('#main').innerText.includes('Basta UMA fonte') && document.querySelector('#main').innerText.includes('Nenhum projeto carregado') && getComputedStyle(document.querySelector('.bottom')).display==='none'");
@@ -55,6 +56,7 @@ try{
  await click('.project-card-hitbox[data-id=raiz]');
  await check('Card surface opens detail without separate Abrir',"document.querySelector('#main h1')?.textContent==='Projeto fictício raiz'");
  await click('[data-action=close-detail]');
+ await check('Filter chip visual 36px and tap region 44px',"(()=>{const b=document.querySelector('.chips .chip');if(!b)return false;return Math.abs(b.getBoundingClientRect().height-36)<1 && parseFloat(getComputedStyle(b,'::after').height)>=44})()");
  for(const [filter,count] of [['todos',5],['ideias',1],['nunca',1],['interrompidos',1],['principais',2]]){await click(`[data-action=filter][data-id=${filter}]`);await check('Semantic filter '+filter,`document.querySelectorAll('.project-card').length===${count}`)}
  await click('[data-action=filter][data-id=todos]');
  await evaluate("document.querySelector('#search').value='filho-a';document.querySelector('#search').dispatchEvent(new Event('input',{bubbles:true}));true");
@@ -69,6 +71,8 @@ try{
  await wait("!document.querySelector('#modal').open");
  await check('Note saved and export available',"document.querySelector('#main').innerText.includes('Anotação sintética') && document.querySelector('[data-action=export]')");
  await click('[data-tab=pendencias]');
+ await check('Approve and reject visual 38px, touch region 44px',"(()=>{const btns=['approve-rule','reject-rule'].map(a=>document.querySelector('[data-action='+a+']'));return btns.every(b=>b && Math.abs(b.getBoundingClientRect().height-38)<1 && parseFloat(getComputedStyle(b,'::after').height)>=44)})()");
+
  await check('All pending categories and rules',"['Aguardando decisão','Sem sua opinião','Aprovado · não implementado','Ações dos projetos','Regras do catálogo'].every(s=>document.querySelector('#main').innerText.includes(s))");
  await click('[data-action=approve-rule][data-id=g1]');
  await check('Approved rule stays visible without execution',"!document.querySelector('[data-action=approve-rule][data-id=g1]') && document.querySelector('.status-aprovado_nao_implementado').innerText.includes('Proposta fictícia')");
@@ -122,7 +126,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=025')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=025')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=026')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=026')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');
