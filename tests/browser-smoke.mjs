@@ -20,6 +20,7 @@ try{
  await send('browsingContext.navigate',{context,url:process.env.PROJOTECA_TEST_URL||'http://127.0.0.1:8771/',wait:'complete'});
  await wait("document.querySelector('#main h1')");
  await check('Empty catalog has import and no simulated projects',"document.querySelector('#main').innerText.includes('Projoteca ainda não carregada') && !document.querySelector('.project-card') && document.querySelector('#main [data-action=import]')");
+ await check('Typography uses real 14, 18, 24 and 11px roles',"getComputedStyle(document.documentElement).fontSize==='14px' && getComputedStyle(document.querySelector('h2')).fontSize==='18px' && getComputedStyle(document.querySelector('h1')).fontSize==='24px' && getComputedStyle(document.querySelector('.bottom button')).fontSize==='11px'");
  await check('Four SVG navigation buttons',"document.querySelectorAll('.bottom button svg').length===4 && !/[▦▤☷▱↥]/.test(document.body.innerText)");
  await click('[data-env=programacao]');
  await check('Programming disabled and one source sufficient',"document.querySelectorAll('.tools button:disabled').length===6 && document.querySelector('#main').innerText.includes('Basta UMA fonte') && document.querySelector('#main').innerText.includes('Nenhum projeto carregado') && getComputedStyle(document.querySelector('.bottom')).display==='none'");
@@ -109,7 +110,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=022')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=022')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=023')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=023')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');

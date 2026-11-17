@@ -146,3 +146,11 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Escuro: priority-alta #F780FF; priority-principal #C675FF. Tipo ideia escuro permaneceu #7CE1D8.
 - Três valores no campo legacy do relatório (priority-normal #C2CFE0; status-danger #FF6947; status-pending #FFC157) são históricos de tokens removidos: não aplicados à paleta oficial, não reintroduzidos como tokens-base.
 - Vinte tokens reais mantidos em tokens.css. Matriz e ZIP Conteúdo inalterados.
+
+## v0.1.13 — Escala tipográfica compartilhada com Vini UI
+
+- Nova folha typography.css com sete tokens em português: navegação 11px; legenda 12px; corpo 14px; campo digitável 16px; seção 18px; título 24px; estatística 30px.
+- styles.css agora utiliza as sete variáveis em vez de fontes de 10/13/15/17/23px ou medidas tipográficas duplicadas. Texto principal 14px e inputs/textarea/select 16px, incluindo HEX do editor, para evitar zoom automático no Safari iPhone.
+- Botões superiores de ambiente mantidos com altura mínima 38px; botões de navegação inferior mantidos com altura mínima 44px.
+- As 20 cores-base de tokens.css e as cinco personalizações aprovadas permanecem intocadas.
+- A escala foi copiada do Vini UI; alterações futuras precisam de incorporação explícita e testes. Matriz e conteúdo privados inalterados.
