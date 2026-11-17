@@ -11,6 +11,14 @@
   --espaco-amplo: 20px;
   --espaco-extra: 24px;
   --espaco-maximo: 32px;
+  --espaco-largo: 28px;
+  --margem-pagina: var(--espaco-amplo);
+  --espaco-blocos-gerais: var(--espaco-grande);
+  --espaco-dentro-cartao-padrao: var(--espaco-grande);
+  --espaco-controles: var(--espaco-pequeno);
+  --espaco-icone-texto: var(--espaco-pequeno);
+  --espaco-separacao-conteudo: var(--espaco-medio);
+  --espaco-separacao-acoes: var(--espaco-grande);
   /* Valores por funcao: cada um referencia a escala comum. */
   /* Todas as quatro paginas do catalogo compartilham hierarquia e espacos. */
   --espaco-ambiente-pagina: var(--espaco-pequeno);

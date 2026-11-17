@@ -20,14 +20,14 @@ test('Prioridades dos ajustes e cartões usam o mesmo componente',()=>{
  assert.doesNotMatch(css,/\.legend-principal\{/);
 });
 test('Fundo de projeto mais suave, descrição curta e engrenagem',()=>{
- assert.match(css,/--intensidade-fundo-projeto:5%/);
+ assert.match(read('ui-tokens.css'),/--intensidade-fundo-projeto:5%/);
  assert.match(css,/var\(--entry-accent\) var\(--intensidade-fundo-projeto\)/);
  assert.match(css,/-webkit-line-clamp:2/);
  assert.match(html,/id="btn-settings"[^\n]*<path d="M10 2h4/);
  assert.doesNotMatch(html,/M12 2v2m0 16v2/);
 });
 test('Folha de espaços e cache versão 024',()=>{
- assert.match(html,/spacing\.css\?v=028/);
- assert.match(sw,/spacing\.css\?v=028/);
- assert.match(sw,/projoteca-visualizador-v028/);
+ assert.match(html,/spacing\.css\?v=029/);
+ assert.match(sw,/spacing\.css\?v=029/);
+ assert.match(sw,/projoteca-visualizador-v029/);
 });

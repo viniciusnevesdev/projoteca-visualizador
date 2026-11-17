@@ -198,3 +198,13 @@ Teste opcional de navegador cobre Ajustes, temas forçados/automático e navega�
 - Um estado de layout do catálogo aplica as regras apenas às quatro abas; Ajustes e ambiente Programação não recebem as regras por engano.
 - Estilos específicos de Pendências (cartões neutros, cores positivas e destrutivas, aviso com raio de cartão) permanecem próprios dessa página.
 - Sem alterações em catálogo, matrizes, arquivos ZIP, cores ou escala de tipografia.
+
+
+## v0.1.19 — Sistema visual global compartilhado
+
+- O novo ui-tokens.css centraliza fundos derivados, selecao, bordas, raios de cartao/capsula/compactos, sombra por papel, dimensoes de acento e tamanhos recorrentes de icones.
+- Fundo suave: antiga formula repetida em varios componentes agora usa um unico token. Fundo de selecao e de destaque usam uma mesma base derivada.
+- O aviso tip utiliza raio de cartao em qualquer aba. Os raios pequenos 9px e 10px convergem em 10px; 14px tem papel proprio.
+- Padding, gap e margens responsivas de componentes equivalentes consomem tokens compartilhados em spacing.css; titulo/corpo/editor preservam suas funcoes diferentes.
+- Cinco margens inline em app.js substituidas por duas classes de papel. Cores cromaticas, arquivos ZIP, Matriz, dados e preferencias locais preservados.
+- Testes novos contra duplicacoes e Firefox nos dois temas, nas quatro abas e no editor.

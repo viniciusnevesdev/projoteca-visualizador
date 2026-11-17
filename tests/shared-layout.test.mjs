@@ -13,10 +13,10 @@ test('Quatro abas compartilham a hierarquia de espacos',()=>{
  assert.match(css,/\.pagina-catalogo \.page-title\{margin-bottom:0\}/);
  assert.match(css,/\.pagina-catalogo \.page-title \.kicker\{margin-top:var\(--espaco-titulo-subtitulo-pagina\)/);
  assert.doesNotMatch(css,/\.environment\.antes-pendencias/);
- assert.match(sw,/projoteca-visualizador-v028/);
+ assert.match(sw,/projoteca-visualizador-v029/);
 });
 test('Tratamento exclusivo dos avisos e pendencias continua exclusivo',()=>{
- assert.match(css,/\.pagina-pendencias \.tip\{border-radius:var\(--radius-card\)/);
+ assert.match(css,/\.tip\{[^}]*border-radius:var\(--raio-cartao\)/);
  assert.match(css,/\.pagina-pendencias \.pending-card\{background:var\(--surface\)/);
  assert.match(css,/\.acao-aprovar\{[^}]*var\(--color-success\)/);
  assert.match(css,/\.acao-reprovar\{[^}]*var\(--color-danger\)/);

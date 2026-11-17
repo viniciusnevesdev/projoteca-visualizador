@@ -98,6 +98,7 @@ try{
   await check('Settings independent of catalog',"document.querySelector('#main h1').textContent==='Ajustes' && getComputedStyle(document.querySelector('.bottom')).display==='none'");
   await click('button[data-action=theme][data-id='+theme+']');
   await check('Theme '+theme,`document.documentElement.dataset.theme==='${theme}' && getComputedStyle(document.documentElement).colorScheme==='${theme}' && localStorage.getItem('projoteca.theme.v1')==='${theme}'`);
+  await check('Equivalent visual tokens in both themes',"(()=>{const root=document.createElement('div');root.innerHTML='<div class=card></div><div class=tip></div><div class=softcard></div><div class=soft></div><div class=chip></div><div class=pill></div><div class=token-row></div><div class=token-swatch></div>';document.body.append(root);const x=[...root.children],g=i=>getComputedStyle(x[i]),env=document.querySelector('.env.active'),nav=document.querySelector('.bottom button.selected');const ok=g(0).borderTopLeftRadius===g(1).borderTopLeftRadius&&g(0).borderTopWidth===g(1).borderTopWidth&&g(2).backgroundColor===g(3).backgroundColor&&g(4).borderTopLeftRadius===g(5).borderTopLeftRadius&&g(6).borderTopLeftRadius==='14px'&&g(7).borderTopLeftRadius==='10px'&&env&&nav&&getComputedStyle(env).backgroundColor===getComputedStyle(nav).backgroundColor;root.remove();return !!ok})()");
   await check('Theme button selected',`document.querySelector('[data-action=theme][data-id=${theme}]').getAttribute('aria-pressed')==='true'`);
   await check('Settings priority pills use real classes', "Boolean(document.querySelector('.settings-legend .priority-principal .priority-pill')&&document.querySelector('.settings-legend .priority-alta .priority-pill'))");
   await evaluate("window.settingsTagStyle=(()=>{const c=getComputedStyle(document.querySelector('.settings-legend .priority-principal .priority-pill'));return Object.fromEntries(['backgroundColor','color','borderColor','paddingTop','paddingLeft'].map(k=>[k,c[k]]))})()");
@@ -132,7 +133,7 @@ try{
  await click('[data-action=token-group][data-id=types]');
  await evaluate("(()=>{const input=document.querySelector('[data-token-input=hex]');input.value='#AA4400';input.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
  await check('HEX applies live to preview and persists locally',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(170, 68, 0)' && JSON.parse(localStorage.getItem('projoteca.token-overrides.v1')).themes.light['--type-project']==='#AA4400'");
- await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=028')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=028')).buildCopyText().includes('Projeto fictício')`);
+ await check('Copy payload contains token and no catalog information',`(await import('./token-editor.js?v=029')).buildCopyText().includes('LIGHT  --type-project = #AA4400') && !(await import('./token-editor.js?v=029')).buildCopyText().includes('Projeto fictício')`);
  await click('[data-action=token-undo]');
  await check('Undo restores original color',"getComputedStyle(document.querySelector('.token-preview .stat-project')).borderInlineStartColor==='rgb(9, 141, 240)'");
  await click('[data-action=token-redo]');

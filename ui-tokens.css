@@ -1,0 +1,26 @@
+/* Tokens visuais globais; fontes, distancias e cores-base em folhas proprias. */
+:root {
+ --raio-cartao:18px;
+ --raio-capsula:9999px;
+ --raio-compacto:10px;
+ --raio-medio:14px;
+ --borda-padrao:1px solid var(--line);
+ --largura-maxima-app:770px;
+ --largura-borda-estatistica:4px;
+ --largura-acento-cartao:3px;
+ --fundo-suave:color-mix(in srgb,var(--line) 30%,var(--surface));
+ --fundo-neutro-intenso:color-mix(in srgb,var(--line) 55%,var(--surface));
+ --intensidade-selecao:16%;
+ --fundo-enfase:light-dark(color-mix(in srgb,var(--brand) var(--intensidade-selecao),var(--surface)),var(--fundo-neutro-intenso));
+ --fundo-selecionado:var(--fundo-enfase);
+ --fundo-destaque-suave:var(--fundo-enfase);
+ --intensidade-fundo-projeto:5%;
+ --sombra-controle:0 1px 3px var(--shadow);
+ --sombra-modal:0 5px 20px var(--shadow);
+ --sombra-amostra:inset 0 0 0 1px var(--shadow);
+ --sombra-aviso:0 3px 12px var(--shadow);
+ --icone-mini:16px;
+ --icone-pequeno:18px;
+ --icone-medio:20px;
+ --icone-padrao:22px;
+}
